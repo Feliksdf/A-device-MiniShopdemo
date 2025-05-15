@@ -13,7 +13,7 @@ const App = () => {
 
   // Моковые товары
   const products = [
-    { id: 1, name: "iPhone 15 Pro max", price: 89990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+15+Pro " },
+    { id: 1, name: "когда эта ебала начнет работать", price: 89990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+15+Pro " },
     { id: 2, name: "MacBook Air M3", price: 119990, category: "Ноутбуки", image: "https://placehold.co/400x400?text=MacBook+Air+M3 " }
   ];
 
