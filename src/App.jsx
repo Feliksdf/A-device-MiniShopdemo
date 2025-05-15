@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const App = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,27 +11,24 @@ const App = () => {
   // Моковые данные категорий
   const categories = ['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'];
 
-  // Моковые данные товаров
+  // Моковые товары
   const products = [
     { id: 1, name: "iPhone 15 Pro", price: 89990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+15+Pro " },
-    { id: 2, name: "MacBook Air M3", price: 119990, category: "Ноутбуки", image: "https://placehold.co/400x400?text=MacBook+Air+M3 " },
-    { id: 3, name: "iPad Pro", price: 69990, category: "Планшеты", image: "https://placehold.co/400x400?text=iPad+Pro " },
-    { id: 4, name: "Apple Watch Ultra", price: 49990, category: "Часы", image: "https://placehold.co/400x400?text=Watch+Ultra " },
-    { id: 5, name: "AirPods Max", price: 29990, category: "Наушники", image: "https://placehold.co/400x400?text=AirPods+Max " },
-    { id: 6, name: "PowerBank 20000mAh", price: 2490, category: "Аксессуары", image: "https://placehold.co/400x400?text=PowerBank " },
-    { id: 7, name: "Apple Watch Series 9", price: 39990, category: "Часы", image: "https://placehold.co/400x400?text=Watch+Series+9 " },
-    { id: 8, name: "iPhone 14", price: 69990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+14 " },
-    { id: 9, name: "USB-C Зарядный кабель", price: 1490, category: "Аксессуары", image: "https://placehold.co/400x400?text= Кабель" },
-    { id: 10, name: "AirPods Pro", price: 22990, category: "Наушники", image: "https://placehold.co/400x400?text=AirPods+Pro " },
-    { id: 11, name: "Mac mini", price: 99990, category: "Ноутбуки", image: "https://placehold.co/400x400?text=Mac+mini " },
-    { id: 12, name: "iPad Air", price: 54990, category: "Планшеты", image: "https://placehold.co/400x400?text=iPad+Air " }
+    { id: 2, name: "MacBook Air M3", price: 119990, category: "Ноутбуки", image: "https://placehold.co/400x400?text=MacBook+Air+M3 " }
   ];
 
   // Баннеры акций
   const banners = [
-    { title: "Новинки уже здесь!", text: "Скидки до 15% на iPhone 15 серии", bg: "bg-gradient-to-r from-blue-500 to-indigo-600" },
-    { title: "Акция недели", text: "Рассрочка 0% на всю технику Apple", bg: "bg-gradient-to-r from-green-500 to-teal-500" },
-    { title: "Только сегодня!", text: "Подарок при покупке от 50 000 ₽", bg: "bg-gradient-to-r from-purple-500 to-pink-500" }
+    {
+      title: "Новинки уже здесь!",
+      text: "Скидки до 15% на iPhone 15 серии",
+      bg: "bg-gradient-to-r from-gray-900 via-black to-gray-950"
+    },
+    {
+      title: "Рассрочка 0%",
+      text: "На всю технику Apple",
+      bg: "bg-gradient-to-r from-red-900 via-black to-red-950"
+    }
   ];
 
   // Определение темы Telegram
@@ -63,12 +60,12 @@ const App = () => {
   // Обработчик связи через Telegram
   const handleContact = (product) => {
     const message = encodeURIComponent(`Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`);
-    const botUsername = 'your_bot_username'; // ← замените на ваш username бота
+    const botUsername = 'your_bot_username'; // ← замените на ваш бот
     window.open(`https://t.me/ ${botUsername}?text=${message}`, '_blank');
   };
 
   return (
-    <div className={`min-h-screen p-4 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'} transition-colors duration-300`}>
+    <div className="min-h-screen p-4 bg-black text-white">
       {/* Шапка магазина */}
       <div className="text-center mb-6">
         <h1 className="text-3xl font-bold">A-Device</h1>
@@ -82,9 +79,7 @@ const App = () => {
           placeholder="Поиск товаров..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className={`w-full px-4 py-2 rounded-lg shadow-sm ${
-            theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-300'
-          } border focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          className="w-full px-4 py-2 rounded-lg shadow-sm bg-gray-900 border-gray-700 border focus:outline-none focus:ring-2 focus:ring-gray-500"
         />
       </div>
 
@@ -99,10 +94,8 @@ const App = () => {
             }}
             className={`px-4 py-2 rounded-full whitespace-nowrap ${
               selectedCategory === category
-                ? 'bg-blue-500 text-white'
-                : theme === 'dark'
-                  ? 'bg-gray-800 hover:bg-gray-700 text-white'
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-800'
+                ? 'bg-white text-black'
+                : 'bg-gray-800 hover:bg-gray-700 text-white'
             } transition`}
           >
             {category}
@@ -126,17 +119,15 @@ const App = () => {
           paginatedProducts.map(product => (
             <div
               key={product.id}
-              className={`${
-                theme === 'dark' ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white hover:bg-gray-50'
-              } rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg`}
+              className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
               <div className="p-4">
                 <h2 className="font-semibold text-lg">{product.name}</h2>
-                <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
+                <p className="text-sm mt-1">от {product.price.toLocaleString()} ₽</p>
                 <button
                   onClick={() => handleContact(product)}
-                  className="mt-3 w-full py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition"
+                  className="mt-3 w-full py-2 bg-white text-black hover:bg-gray-300 rounded-md transition"
                 >
                   Связаться
                 </button>
@@ -153,9 +144,7 @@ const App = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`px-3 py-1 rounded-md ${
-            theme === 'dark' ? 'bg-gray-700 disabled:opacity-50' : 'bg-gray-200 disabled:opacity-50'
-          }`}
+          className="px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50"
         >
           ←
         </button>
@@ -163,9 +152,7 @@ const App = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`px-3 py-1 rounded-md ${
-            theme === 'dark' ? 'bg-gray-700 disabled:opacity-50' : 'bg-gray-200 disabled:opacity-50'
-          }`}
+          className="px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50"
         >
           →
         </button>
