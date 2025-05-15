@@ -38,7 +38,7 @@ const App = () => {
   // Категории
   const categories = ['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'];
 
-  // Тема Telegram (если используется в WebApp)
+  // Тема Telegram WebApp
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
       const tgTheme = window.Telegram.WebApp.themeParams;
@@ -46,14 +46,14 @@ const App = () => {
     }
   }, []);
 
-  // Фильтр по категории и поиску
+  // Фильтрация товаров
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'Все' || product.category === selectedCategory;
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
-  // Открытие модального окна с товаром
+  // Открытие модального окна
   const openProductDetails = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
@@ -65,13 +65,12 @@ const App = () => {
     setSelectedProduct(null);
   };
 
-  // Обработчик кнопки "Связаться" — пишет в бота
+  // Открытие Telegram профиля с сообщением о товаре
   const handleContact = (product) => {
     const message = encodeURIComponent(
-      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`
+      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽\n\nTelegram: @feliksdf`
     );
-    const botUsername = 'your_bot_username'; // ← замените на ваш бот
-    window.open(`https://t.me/ ${botUsername}?text=${message}`, '_blank');
+    window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
   };
 
   return (
@@ -176,7 +175,7 @@ const App = () => {
 
             <p className="text-lg mb-6">Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
 
-            {/* Кнопка связи с ботом */}
+            {/* Кнопка связи через Telegram */}
             <button
               onClick={() => handleContact(selectedProduct)}
               className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
@@ -187,7 +186,6 @@ const App = () => {
         </div>
       )}
 
-      {/* Стили для скрытия скролла */}
       <style jsx>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
