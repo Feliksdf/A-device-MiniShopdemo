@@ -14,7 +14,7 @@ const App = () => {
       name: "iPhone 15 Pro",
       price: 89990,
       category: "Телефоны",
-      image: "file:///C:/Users/user/Desktop/i.webp",
+      image: "https://placehold.co/400x400?text=iPhone+15+Pro ",
       description: "Новый iPhone 15 Pro с титановой рамкой и улучшенной камерой",
       extraImages: [
         "https://placehold.co/400x400?text= Камера+iPhone",
@@ -35,16 +35,10 @@ const App = () => {
     }
   ];
 
-  // Баннеры акций
-  const banners = [
-    {
-      title: "Новинки уже здесь!",
-      text: "Скидки до 15% на iPhone 15 серии",
-      bg: "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950"
-    }
-  ];
+  // Категории
+  const categories = ['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'];
 
-  // Определение темы Telegram WebApp
+  // Тема Telegram (если используется в WebApp)
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
       const tgTheme = window.Telegram.WebApp.themeParams;
@@ -52,7 +46,7 @@ const App = () => {
     }
   }, []);
 
-  // Фильтрация товаров
+  // Фильтр по категории и поиску
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'Все' || product.category === selectedCategory;
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -71,9 +65,11 @@ const App = () => {
     setSelectedProduct(null);
   };
 
-  // Обработчик связи через Telegram
+  // Обработчик кнопки "Связаться" — пишет в бота
   const handleContact = (product) => {
-    const message = encodeURIComponent(`Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`);
+    const message = encodeURIComponent(
+      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`
+    );
     const botUsername = 'your_bot_username'; // ← замените на ваш бот
     window.open(`https://t.me/ ${botUsername}?text=${message}`, '_blank');
   };
@@ -101,7 +97,7 @@ const App = () => {
 
       {/* Категории */}
       <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-        {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
+        {categories.map((category, index) => (
           <button
             key={index}
             onClick={() => setSelectedCategory(category)}
@@ -118,12 +114,14 @@ const App = () => {
 
       {/* Баннеры акций */}
       <div className="mb-8 px-4 max-w-4xl mx-auto space-y-4">
-        {banners.map((banner, index) => (
-          <div key={index} className={`${banner.bg} rounded-xl shadow-md p-4 text-white`}>
-            <h2 className="text-lg font-semibold">{banner.title}</h2>
-            <p className="text-sm opacity-90 mt-1">{banner.text}</p>
-          </div>
-        ))}
+        <div className="bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950 rounded-xl shadow-md p-4 text-white">
+          <h2 className="text-lg font-semibold">Новинки уже здесь!</h2>
+          <p className="text-sm opacity-90 mt-1">Скидки до 15% на iPhone 15 серии</p>
+        </div>
+        <div className="bg-gradient-to-r from-teal-900 via-black to-teal-950 rounded-xl shadow-md p-4 text-white">
+          <h2 className="text-lg font-semibold">Рассрочка 0%</h2>
+          <p className="text-sm opacity-90 mt-1">На всю технику Apple</p>
+        </div>
       </div>
 
       {/* Товары */}
@@ -155,7 +153,11 @@ const App = () => {
               onClick={closeProductDetails}
               className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">×</button>
 
-            <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-64 object-cover rounded-lg mb-4" />
+            <img
+              src={selectedProduct.image}
+              alt={selectedProduct.name}
+              className="w-full h-64 object-cover rounded-lg mb-4"
+            />
 
             <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
             <p className="opacity-90 mb-4">{selectedProduct.description}</p>
@@ -163,15 +165,21 @@ const App = () => {
             {/* Дополнительные фото */}
             <div className="flex space-x-2 mb-6 overflow-x-auto no-scrollbar">
               {selectedProduct.extraImages?.map((img, i) => (
-                <img key={i} src={img} alt={`Доп. фото ${i + 1}`} className="w-32 h-32 object-cover rounded-lg" />
+                <img
+                  key={i}
+                  src={img}
+                  alt={`Доп. фото ${i + 1}`}
+                  className="w-32 h-32 object-cover rounded-lg"
+                />
               ))}
             </div>
 
             <p className="text-lg mb-6">Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
 
+            {/* Кнопка связи с ботом */}
             <button
               onClick={() => handleContact(selectedProduct)}
-              className="w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
+              className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
               Связаться
             </button>
@@ -179,6 +187,7 @@ const App = () => {
         </div>
       )}
 
+      {/* Стили для скрытия скролла */}
       <style jsx>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
