@@ -9,17 +9,26 @@
   <!-- Подключение Inter из Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter :wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- TailwindCSS через CDN (временно) -->
+  <!-- Tailwind через CDN -->
   <script src="https://cdn.tailwindcss.com "></script>
 
-  <!-- Стили с кастомным шрифтом -->
+  <!-- Обнуление стилей -->
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: #ffffff;
       font-family: 'Inter', sans-serif;
+    }
+
+    #root, #__next, #app {
+      width: 100%;
+      min-height: 100vh;
     }
   </style>
 </head>
-<body class="bg-black text-white min-h-screen p-4">
+<body class="bg-black text-white m-0 p-0 overflow-x-hidden">
   <div id="root"></div>
 </body>
 </html>

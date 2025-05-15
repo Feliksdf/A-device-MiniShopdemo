@@ -6,7 +6,7 @@ const App = () => {
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Товары
+  // Моковые товары
   const products = [
     { id: 1, name: "iPhone 15 Pro", price: 89990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+15+Pro " },
     { id: 2, name: "MacBook Air M3", price: 119990, category: "Ноутбуки", image: "https://placehold.co/400x400?text=MacBook+Air+M3 " },
@@ -38,14 +38,13 @@ const App = () => {
   }, []);
 
   // Фильтрация товаров
-  const itemsPerPage = 6;
-
   const filteredProducts = products.filter(product => {
-    const matchesCategory = selectedCategory === 'Все' || product.category === selectedCategory;
+    const matchesCategory = selectedCategory === 'Все' || product.category === product.category;
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
+  const itemsPerPage = 6;
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * itemsPerPage,
@@ -65,15 +64,15 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen p-4 bg-black text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Заголовок магазина */}
-      <div className="text-center mb-6">
+      <div className="text-center mb-6 pt-6">
         <h1 className="text-3xl font-bold">A-Device</h1>
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
       </div>
 
       {/* Поиск */}
-      <div className="mb-6">
+      <div className="mb-6 px-4 max-w-3xl mx-auto w-full">
         <input
           type="text"
           placeholder="Поиск товаров..."
@@ -86,7 +85,7 @@ const App = () => {
       </div>
 
       {/* Категории */}
-      <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar">
+      <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
         {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
           <button
             key={index}
@@ -97,9 +96,7 @@ const App = () => {
             className={`px-4 py-2 rounded-full whitespace-nowrap ${
               selectedCategory === category
                 ? 'bg-cyan-500 text-black'
-                : theme === 'dark'
-                  ? 'bg-gray-800 hover:bg-gray-700 text-white'
-                  : 'bg-gray-200 hover:bg-gray-300 text-gray-800'
+                : 'bg-gray-900 hover:bg-gray-800 text-white'
             } transition`}
           >
             {category}
@@ -108,7 +105,7 @@ const App = () => {
       </div>
 
       {/* Баннеры акций */}
-      <div className="mb-8 space-y-4">
+      <div className="mb-8 px-4 max-w-4xl mx-auto space-y-4">
         {banners.map((banner, index) => (
           <div key={index} className={`${banner.bg} rounded-xl shadow-md p-4 text-white`}>
             <h2 className="text-lg font-semibold">{banner.title}</h2>
@@ -118,37 +115,33 @@ const App = () => {
       </div>
 
       {/* Товары */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {paginatedProducts.length > 0 ? (
-          paginatedProducts.map(product => (
-            <div
-              key={product.id}
-              className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg border border-cyan-500"
-            >
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h2 className="font-semibold text-lg">{product.name}</h2>
-                <p className="text-sm mt-1">от {product.price.toLocaleString()} ₽</p>
-                <button
-                  onClick={() => handleContact(product)}
-                  className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
-                >
-                  Связаться
-                </button>
-              </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto">
+        {paginatedProducts.map(product => (
+          <div
+            key={product.id}
+            className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg border border-cyan-500"
+          >
+            <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+            <div className="p-4">
+              <h2 className="font-semibold text-lg">{product.name}</h2>
+              <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
+              <button
+                onClick={() => handleContact(product)}
+                className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
+              >
+                Связаться
+              </button>
             </div>
-          ))
-        ) : (
-          <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
-        )}
+          </div>
+        ))}
       </div>
 
       {/* Пагинация */}
-      <div className="flex justify-center items-center space-x-2 mt-8">
+      <div className="flex justify-center items-center space-x-2 mt-8 mb-10">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50`}
+          className="px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50"
         >
           ←
         </button>
@@ -156,7 +149,7 @@ const App = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50`}
+          className="px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50"
         >
           →
         </button>
