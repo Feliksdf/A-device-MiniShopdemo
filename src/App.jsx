@@ -20,7 +20,7 @@ const App = () => {
   // Баннеры акций
   const banners = [
     {
-      title: "Новинка уже здесь, заходи заебал!",
+      title: "Как же ты меня заебал ебучий кодинг",
       text: "Скидки до 15% на iPhone 15 серии",
       bg: "bg-gradient-to-r from-gray-900 via-black to-gray-950"
     },
