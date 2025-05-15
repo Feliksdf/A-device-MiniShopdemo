@@ -13,14 +13,14 @@ const App = () => {
 
   // Моковые товары
   const products = [
-    { id: 1, name: "iPhone 15 Pro max ultrapizde", price: 89990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+15+Pro " },
+    { id: 1, name: "iPhone 15 Pro max", price: 89990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+15+Pro " },
     { id: 2, name: "MacBook Air M3", price: 119990, category: "Ноутбуки", image: "https://placehold.co/400x400?text=MacBook+Air+M3 " }
   ];
 
   // Баннеры акций
   const banners = [
     {
-      title: "Новинки уже здесь!",
+      title: "Новинка уже здесь, заходи заебал!",
       text: "Скидки до 15% на iPhone 15 серии",
       bg: "bg-gradient-to-r from-gray-900 via-black to-gray-950"
     },
