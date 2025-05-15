@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | A-Device</title>
+  <script src="https://cdn.tailwindcss.com "></script>
+</head>
+<body class="bg-black text-white min-h-screen p-6">
+  <h1 class="text-2xl font-bold mb-6">📦 Управление товарами</h1>
+
+  <!-- Форма добавления -->
+  <form id="productForm" class="space-y-4 mb-8">
+    <input type="text" name="name" placeholder="Название" required class="bg-gray-900 px-4 py-2 rounded w-full" />
+    <input type="number" name="price" placeholder="Цена" required class="bg-gray-900 px-4 py-2 rounded w-full" />
+    <input type="text" name="image" placeholder="Ссылка на изображение" class="bg-gray-900 px-4 py-2 rounded w-full" />
+    
+    <select name="category" class="bg-gray-900 px-4 py-2 rounded w-full">
+      <option value="Телефоны">Телефоны</option>
+      <option value="Ноутбуки">Ноутбуки</option>
+      <option value="Планшеты">Планшеты</option>
+      <option value="Часы">Часы</option>
+      <option value="Наушники">Наушники</option>
+      <option value="Аксессуары">Аксессуары</option>
+    </select>
+
+    <button type="submit" class="mt-2 bg-white text-black py-2 px-4 rounded hover:bg-gray-300 transition">
+      Добавить товар
+    </button>
+  </form>
+
+  <!-- Список товаров -->
+  <div id="productsList" class="space-y-4"></div>
+
+  <!-- JS скрипт -->
+  <script src="/admin/admin.js"></script>
+</body>
+</html>
