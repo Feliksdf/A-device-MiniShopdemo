@@ -4,14 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin | A-Device</title>
+
+  <!-- TailwindCSS через CDN -->
   <script src="https://cdn.tailwindcss.com "></script>
+
+  <!-- Обнуление стилей -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+    }
+  </style>
 </head>
 <body class="bg-black text-white min-h-screen p-6">
   <h1 class="text-2xl font-bold mb-6">📦 Управление товарами</h1>
 
-  <!-- Форма добавления -->
+  <!-- Форма добавления товара -->
   <form id="productForm" class="space-y-4 mb-8">
-    <input type="text" name="name" placeholder="Название" required class="bg-gray-900 px-4 py-2 rounded w-full" />
+    <input type="text" name="name" placeholder="Название товара" required class="bg-gray-900 px-4 py-2 rounded w-full" />
     <input type="number" name="price" placeholder="Цена" required class="bg-gray-900 px-4 py-2 rounded w-full" />
     <input type="text" name="image" placeholder="Ссылка на изображение" class="bg-gray-900 px-4 py-2 rounded w-full" />
     
@@ -24,7 +37,9 @@
       <option value="Аксессуары">Аксессуары</option>
     </select>
 
-    <button type="submit" class="mt-2 bg-white text-black py-2 px-4 rounded hover:bg-gray-300 transition">
+    <textarea name="description" placeholder="Описание товара" rows="3" class="bg-gray-900 px-4 py-2 rounded w-full"></textarea>
+
+    <button type="submit" class="mt-2 bg-cyan-500 text-black py-2 px-4 rounded hover:bg-cyan-600 transition">
       Добавить товар
     </button>
   </form>

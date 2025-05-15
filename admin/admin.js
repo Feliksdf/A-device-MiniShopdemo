@@ -1,11 +1,14 @@
-const firebaseUrl = 'https://a-device-firebase-shop-default-rtdb.firebaseio.com/products ';
+// 🔗 Замените это на ваш Firebase URL
+const firebaseUrl = 'https://your-firebase.firebaseio.com/products ';
 
+// Функция загрузки товаров
 function loadProducts() {
   fetch(`${firebaseUrl}.json`)
     .then(res => res.json())
     .then(data => {
       const list = document.getElementById('productsList');
       list.innerHTML = '';
+      
       if (data) {
         for (let key in data) {
           const product = data[key];
@@ -19,4 +22,38 @@ function loadProducts() {
           `;
         }
       } else {
-        list.innerHTML = '<p class="text-center opacity-70
+        list.innerHTML = '<p class="text-center opacity-70">Нет товаров</p>';
+      }
+    });
+}
+
+// Форма добавления
+document.getElementById('productForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+
+  const newProduct = {
+    name: form.name.value,
+    price: parseInt(form.price.value),
+    image: form.image.value || "https://placehold.co/400x400?text=No+Image ",
+    category: form.category.value,
+    description: form.description.value || ""
+  };
+
+  fetch(firebaseUrl + '.json', {
+    method: 'POST',
+    body: JSON.stringify(newProduct)
+  }).then(() => {
+    form.reset();
+    loadProducts();
+  });
+});
+
+// Удаление товара
+function deleteProduct(key) {
+  fetch(`${firebaseUrl}/${key}.json`, {
+    method: 'DELETE'
+  }).then(loadProducts);
+}
+
+loadProducts();
