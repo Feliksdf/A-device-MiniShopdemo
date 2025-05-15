@@ -14,7 +14,7 @@ const App = () => {
       name: "iPhone 15 Pro",
       price: 89990,
       category: "Телефоны",
-      image: "https://placehold.co/400x400?text=iPhone+15+Pro ",
+      image: "file:///C:/Users/user/Desktop/i.webp",
       description: "Новый iPhone 15 Pro с титановой рамкой и улучшенной камерой",
       extraImages: [
         "https://placehold.co/400x400?text= Камера+iPhone",
