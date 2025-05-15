@@ -65,10 +65,10 @@ const App = () => {
     setSelectedProduct(null);
   };
 
-  // Открытие Telegram профиля с сообщением о товаре
+  // Обработчик кнопки "Связаться" — открывает ваш профиль
   const handleContact = (product) => {
     const message = encodeURIComponent(
-      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽\n\nTelegram: @feliksdf`
+      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`
     );
     window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
   };
@@ -175,7 +175,7 @@ const App = () => {
 
             <p className="text-lg mb-6">Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
 
-            {/* Кнопка связи через Telegram */}
+            {/* Кнопка связи */}
             <button
               onClick={() => handleContact(selectedProduct)}
               className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
