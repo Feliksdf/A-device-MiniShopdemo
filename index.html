@@ -6,8 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A-Device MiniShop</title>
 
-  <!-- Tailwind через CDN -->
+  <!-- Подключение современного шрифта: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter :wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Подключение Tailwind через CDN -->
   <script src="https://cdn.tailwindcss.com "></script>
+
+  <!-- Сброс стилей и базовые настройки -->
   <style>
     html, body {
       margin: 0;
@@ -15,15 +20,31 @@
       font-family: 'Inter', sans-serif;
       background-color: #000000;
       color: #ffffff;
+      overflow-x: hidden;
     }
+
     #root {
       width: 100%;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Дополнительные миксины */
+    .btn-cyan {
+      @apply bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition-all duration-300 py-2 px-4;
+    }
+
+    .card {
+      @apply bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg border border-cyan-500;
     }
   </style>
 </head>
 <body class="bg-black text-white m-0 p-0">
+  <!-- Корневая точка React -->
   <div id="root"></div>
+
+  <!-- Подключение React точки входа -->
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
