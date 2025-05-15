@@ -6,11 +6,6 @@ const App = () => {
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 6;
-
-  // Категории
-  const categories = ['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'];
-
   // Товары
   const products = [
     { id: 1, name: "iPhone 15 Pro", price: 89990, category: "Телефоны", image: "https://placehold.co/400x400?text=iPhone+15+Pro " },
@@ -43,6 +38,8 @@ const App = () => {
   }, []);
 
   // Фильтрация товаров
+  const itemsPerPage = 6;
+
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'Все' || product.category === selectedCategory;
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -90,7 +87,7 @@ const App = () => {
 
       {/* Категории */}
       <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar">
-        {categories.map((category, index) => (
+        {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
           <button
             key={index}
             onClick={() => {
@@ -126,14 +123,12 @@ const App = () => {
           paginatedProducts.map(product => (
             <div
               key={product.id}
-              className={`${
-                theme === 'dark' ? 'bg-gray-900 hover:bg-gray-850' : 'bg-white hover:bg-gray-50'
-              } rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg border border-cyan-500`}
+              className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg border border-cyan-500"
             >
               <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
               <div className="p-4">
                 <h2 className="font-semibold text-lg">{product.name}</h2>
-                <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
+                <p className="text-sm mt-1">от {product.price.toLocaleString()} ₽</p>
                 <button
                   onClick={() => handleContact(product)}
                   className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
@@ -144,7 +139,7 @@ const App = () => {
             </div>
           ))
         ) : (
-          <p className="col-span-full text-center py-8 opacity-70">Товары не найдены</p>
+          <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
         )}
       </div>
 
@@ -153,9 +148,7 @@ const App = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`px-3 py-1 rounded-md ${
-            theme === 'dark' ? 'bg-gray-800 disabled:opacity-50' : 'bg-gray-200 disabled:opacity-50'
-          }`}
+          className={`px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50`}
         >
           ←
         </button>
@@ -163,9 +156,7 @@ const App = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`px-3 py-1 rounded-md ${
-            theme === 'dark' ? 'bg-gray-800 disabled:opacity-50' : 'bg-gray-200 disabled:opacity-50'
-          }`}
+          className={`px-3 py-1 rounded-md bg-gray-800 disabled:opacity-50`}
         >
           →
         </button>

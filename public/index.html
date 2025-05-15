@@ -6,11 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A-Device MiniShop</title>
 
-  <!-- Tailwind CSS CDN (для тестирования) -->
+  <!-- Подключение Inter из Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter :wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS через CDN (временно) -->
   <script src="https://cdn.tailwindcss.com "></script>
+
+  <!-- Стили с кастомным шрифтом -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-gray-100 text-gray-800 p-4">
+<body class="bg-black text-white min-h-screen p-4">
   <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
