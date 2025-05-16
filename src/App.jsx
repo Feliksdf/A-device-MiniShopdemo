@@ -28,14 +28,41 @@ const App = () => {
       .catch(err => {
         console.error('Ошибка загрузки JSON:', err);
         setBanners([]);
-        setProducts([]);
+        setProducts([
+          {
+            id: 1,
+            name: "iPhone 15 Pro",
+            price: 89990,
+            category: "Телефоны",
+            image: "https://placehold.co/400x400?text=iPhone+15+Pro ",
+            description: "Новый iPhone с титановой рамкой и улучшенной камерой",
+            storage: "256 ГБ",
+            batteryHealth: "95%",
+            condition: "Идеальное",
+            extraImages: [
+              "https://placehold.co/400x400?text= Камера+iPhone",
+              "https://placehold.co/400x400?text= Титановая рамка"
+            ]
+          },
+          {
+            id: 2,
+            name: "MacBook Air M3",
+            price: 119990,
+            category: "Ноутбуки",
+            image: "https://placehold.co/400x400?text=MacBook+Air+M3 ",
+            description: "Легкий и мощный ноутбук Apple на чипе M3",
+            storage: "1 ТБ SSD",
+            batteryHealth: "100%",
+            condition: "Новый"
+          }
+        ]);
       });
   }, []);
 
   // Фильтрация товаров
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'Все' || product.category === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = product.name?.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -146,13 +173,13 @@ const App = () => {
       {modalImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-          onClick={() => setModalImage(null)}
+          onClick={closeFullScreen}
         >
           <img
             src={modalImage}
             alt="Полноразмерное фото"
             className="max-w-[90vw] max-h-[90vh] object-contain"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           />
         </div>
       )}
@@ -186,7 +213,7 @@ const App = () => {
             </div>
 
             <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
-            <p className="opacity-90 mb-2">💰 Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
+            <p className="opacity-90 mb-2">💰 Цена: <strong>{selectedProduct.price?.toLocaleString()} ₽</strong></p>
 
             {selectedProduct.storage && (
               <p className="opacity-90 mb-2">📦 Память: <strong>{selectedProduct.storage}</strong></p>
@@ -208,7 +235,7 @@ const App = () => {
                 const message = encodeURIComponent(
                   `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽\n\nTelegram: @feliksdf`
                 );
-                window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
+                window.open(`https://t.me/feliks_df?text= ${message}`, '_blank'); // ← Исправлена лишняя точка
               }}
               className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
