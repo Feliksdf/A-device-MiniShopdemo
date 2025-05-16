@@ -181,7 +181,7 @@ const App = () => {
           <div className="bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full relative">
             <button
               onClick={() => setSelectedProduct(null)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl">×</button>
+              className="absolute top-2 right-2 text-gray-400 hover:text-white text-4xl">×</button>
 
             {/* Клик по фото в карточке → открывает полноразмерное фото */}
             <img
