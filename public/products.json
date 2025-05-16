@@ -5,7 +5,7 @@
       "title": "Новинки уже здесь!",
       "text": "Скидки до 15% на iPhone 15 серии",
       "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
-      "image": "https://placehold.co/600x200?text=New+iPhone+15+Pro ",
+      "image": "/images/banner-iphone.jpg",
       "linkToProduct": 1
     },
     {
@@ -13,21 +13,21 @@
       "title": "Рассрочка 0%",
       "text": "На всю технику Apple",
       "bg": "bg-gradient-to-r from-teal-900 via-black to-teal-950",
-      "image": "https://placehold.co/600x200?text=Apple+Promo ",
-      "linkToProduct": 2
+      "image": "/images/banner-macbook.jpg",
+      "linkToProduct": 4
     }
   ],
   "products": [
     {
       "id": 1,
-      "name": "iPhone 14 Pro max",
+      "name": "iPhone 14 Pro Max",
       "price": 60990,
       "category": "Телефоны",
-      "image": "/images/14pmf1.jpg ",
+      "image": "/images/14pmf1.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "128 ГБ",
       "batteryHealth": "88%",
-      "condition": "Идеал",
+      "condition": "Идеальное",
       "extraImages": [
         "/images/14pmf2.jpg",
         "/images/14pmb.jpg"
@@ -38,31 +38,27 @@
       "name": "iPhone 14 Pro",
       "price": 50990,
       "category": "Телефоны",
-      "image": "/images/13pmf1.jpg ",
+      "image": "/images/14pf1.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "128 ГБ",
       "batteryHealth": "84%",
-      "condition": "Идеал",
-      "extraImages": [
-        "/images/14pf2.jpg",
-        "/images/14pb.jpg"
-      ]
+      "condition": "Идеальное"
     },
-       {
-      "id": 4,
-      "name": "iPhone 13 Pro max",
+    {
+      "id": 3,
+      "name": "iPhone 13 Pro Max",
       "price": 50990,
       "category": "Телефоны",
-      "image": "/images/13pmf1.jpg ",
+      "image": "/images/13pmf1.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "256 ГБ",
       "batteryHealth": "83%",
-      "condition": "Хорошее(есть царапины на дисплее)",
+      "condition": "Хорошее (есть царапины на дисплее)",
       "extraImages": [
         "/images/13pmf2.jpg",
         "/images/13pmf3.jpg",
         "/images/13pmb.jpg"
       ]
-    },
+    }
   ]
 }
