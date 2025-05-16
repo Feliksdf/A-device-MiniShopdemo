@@ -8,6 +8,7 @@ const App = () => {
   const [banners, setBanners] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [modalImage, setModalImage] = useState(null);
+  const [showLogo, setShowLogo] = useState(true); // Отображение логотипа
 
   // Определение темы Telegram WebApp
   useEffect(() => {
@@ -27,33 +28,27 @@ const App = () => {
       })
       .catch(err => {
         console.error('Ошибка загрузки JSON:', err);
-        setBanners([]);
-        setProducts([
+        setBanners([
           {
             id: 1,
-            name: "iPhone 15 Pro",
-            price: 89990,
-            category: "Телефоны",
-            image: "https://placehold.co/400x400?text=iPhone+15+Pro ",
-            description: "Новый iPhone с титановой рамкой и улучшенной камерой",
-            storage: "256 ГБ",
-            batteryHealth: "95%",
-            condition: "Идеальное",
-            extraImages: [
-              "https://placehold.co/400x400?text= Камера+iPhone",
-              "https://placehold.co/400x400?text= Титановая рамка"
-            ]
-          },
+            title: "Новинки уже здесь!",
+            text: "Скидки до 15% на iPhone 15 серии",
+            bg: "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
+            image: "https://placehold.co/600x200?text=New+iPhone+15+Pro ",
+            linkToProduct": 1
+          }
+        ]);
+        setProducts([
           {
-            id: 2,
-            name: "MacBook Air M3",
-            price: 119990,
-            category: "Ноутбуки",
-            image: "https://placehold.co/400x400?text=MacBook+Air+M3 ",
-            description: "Легкий и мощный ноутбук Apple на чипе M3",
-            storage: "1 ТБ SSD",
-            batteryHealth: "100%",
-            condition: "Новый"
+            id": 1,
+            name": "iPhone 15 Pro",
+            price": 89990,
+            category": "Телефоны",
+            image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
+            description": "Новый iPhone с титановой рамкой и улучшенной камерой",
+            storage": "256 ГБ",
+            batteryHealth": "95%",
+            condition": "Идеальное"
           }
         ]);
       });
@@ -77,15 +72,20 @@ const App = () => {
     if (product) setSelectedProduct(product);
   };
 
-  // При клике на товар → открываем детали
-  const openProductDetails = (product) => {
-    setSelectedProduct(product);
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Анимированный логотип */}
+      {showLogo && (
+        <div 
+          className="fixed top-4 left-4 z-50 cursor-pointer animate-pulse"
+          onClick={() => setShowLogo(false)}
+        >
+          <img src="/logo.gif" alt="Логотип A-Device" className="h-16 w-auto rounded-full" />
+        </div>
+      )}
+
       {/* Шапка магазина */}
-      <div className="text-center mb-6 pt-6">
+      <div className="text-center mb-6 pt-6 mt-20">
         <h1 className="text-3xl font-bold">📱 A-Device</h1>
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
       </div>
@@ -158,7 +158,7 @@ const App = () => {
 
                   <div className="p-4">
                     <h2 className="font-semibold text-lg">{product.name}</h2>
-                    <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
+                    <p className="text-sm opacity-70 mt-1">от {product.price?.toLocaleString()} ₽</p>
                   </div>
                 </div>
               ))
@@ -173,13 +173,13 @@ const App = () => {
       {modalImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-          onClick={closeFullScreen}
+          onClick={() => setModalImage(null)}
         >
           <img
             src={modalImage}
             alt="Полноразмерное фото"
             className="max-w-[90vw] max-h-[90vh] object-contain"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
@@ -235,7 +235,7 @@ const App = () => {
                 const message = encodeURIComponent(
                   `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽\n\nTelegram: @feliksdf`
                 );
-                window.open(`https://t.me/feliks_df?text= ${message}`, '_blank'); // ← Исправлена лишняя точка
+                window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
               className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
