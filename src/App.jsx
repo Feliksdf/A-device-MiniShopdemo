@@ -9,33 +9,6 @@ const App = () => {
   const [modalImage, setModalImage] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Fallback данные
-  const fallbackData = {
-    banners: [
-      {
-        id: 1,
-        title: "Новинки уже здесь!",
-        text: "Скидки до 15% на iPhone 15 серии",
-        bg: "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
-        image: "https://placehold.co/600x200?text=New+iPhone+15+Pro ",
-        linkToProduct": 1
-      }
-    ],
-    products: [
-      {
-        id": 1,
-        name": "iPhone 15 Pro",
-        price": 89990,
-        category": "Телефоны",
-        image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
-        description": "Новый iPhone с титановой рамкой и улучшенной камерой",
-        storage": "256 ГБ",
-        batteryHealth": "95%",
-        condition": "Идеальное"
-      }
-    ]
-  };
-
   // Определение темы Telegram WebApp
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
@@ -54,8 +27,8 @@ const App = () => {
       })
       .catch(err => {
         console.error('Ошибка загрузки JSON:', err);
-        setBanners(fallbackData.banners);
-        setProducts(fallbackData.products);
+        setBanners([]);
+        setProducts([]);
       });
   }, []);
 
@@ -66,22 +39,23 @@ const App = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Открытие полноразмерного фото
+  // Открытие карточки товара
+  const openProductDetails = (product) => {
+    setSelectedProduct(product);
+  };
+
+  // Закрытие карточки товара
+  const closeProductDetails = () => {
+    setSelectedProduct(null);
+  };
+
+  // Открытие фото на весь экран
   const openFullScreen = (url) => {
     setModalImage(url);
   };
 
-  // Закрытие модального окна
   const closeFullScreen = () => {
     setModalImage(null);
-  };
-
-  // Обработчик клика по баннеру
-  const handleBannerClick = (banner) => {
-    const product = products.find(p => p.id === banner.linkToProduct);
-    if (product) {
-      setSelectedProduct(product);
-    }
   };
 
   return (
@@ -108,7 +82,7 @@ const App = () => {
         {banners.map((banner, index) => (
           <div
             key={index}
-            onClick={() => handleBannerClick(banner)}
+            onClick={() => openProductDetails(products.find(p => p.id === banner.linkToProduct))}
             className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
           >
             <img src={banner.image} alt={banner.title} className="w-full h-32 object-cover rounded-t-xl" />
@@ -144,7 +118,7 @@ const App = () => {
             <div
               key={product.id}
               className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-              onClick={() => setSelectedProduct(product)}
+              onClick={() => openProductDetails(product)}
             >
               <img
                 src={product.image}
@@ -182,12 +156,12 @@ const App = () => {
         </div>
       )}
 
-      {/* Информация о товаре (если выбран через баннер или клик по карточке) */}
+      {/* Информация о товаре */}
       {selectedProduct && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-90">
           <div className="bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full relative">
             <button
-              onClick={() => setSelectedProduct(null)}
+              onClick={closeProductDetails}
               className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl">×</button>
 
             <img
@@ -210,7 +184,7 @@ const App = () => {
             )}
 
             {selectedProduct.condition && (
-              <p className="opacity-90 mb-2">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
+              <p className="opacity-90 mb-4">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
             )}
 
             {selectedProduct.description && (
@@ -226,7 +200,7 @@ const App = () => {
               }}
               className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
-              Связаться
+              Связаться с @feliksdf
             </button>
           </div>
         </div>
