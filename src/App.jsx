@@ -8,7 +8,6 @@ const App = () => {
   const [banners, setBanners] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [modalImage, setModalImage] = useState(null);
-  const [showLogo, setShowLogo] = useState(true);
 
   // Определение темы Telegram WebApp
   useEffect(() => {
@@ -28,6 +27,8 @@ const App = () => {
       })
       .catch(err => {
         console.error('Ошибка загрузки JSON:', err);
+        
+        // Используем fallback данные
         setBanners([
           {
             id: 1,
@@ -48,11 +49,7 @@ const App = () => {
             description: "Новый iPhone с титановой рамкой и улучшенной камерой",
             storage: "256 ГБ",
             batteryHealth: "95%",
-            condition: "Идеальное",
-            extraImages: [
-              "https://placehold.co/400x400?text= Камера+iPhone",
-              "https://placehold.co/400x400?text= Титановая рамка"
-            ]
+            condition: "Идеальное"
           },
           {
             id: 2,
@@ -87,32 +84,14 @@ const App = () => {
     if (product) setSelectedProduct(product);
   };
 
-  // При клике на товар → открываем детали
-  const openProductDetails = (product) => {
-    setSelectedProduct(product);
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Анимированный логотип */}
-      {showLogo && (
-        <div 
-          className="fixed top-4 left-4 z-50 cursor-pointer animate-pulse"
-          onClick={() => setShowLogo(false)}
-        >
-          <img 
-            src="/logo.gif" 
-            alt="Логотип A-Device" 
-            className="h-16 w-auto rounded-full" 
-          />
+      {/* Шапка магазина с логотипом */}
+      <div className="text-center mb-6 pt-6 flex flex-col items-center justify-center">
+        <div className="flex items-center space-x-3 justify-center">
+          <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto rounded-full" />
+          <h1 className="text-3xl font-bold">A-Device</h1>
         </div>
-      )}
-
-      {/* Шапка магазина */}
-      <div className="text-center mb-6 pt-6 mt-20">
-        {!showLogo && (
-          <h1 className="text-3xl font-bold">📱 A-Device</h1>
-        )}
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
       </div>
 
@@ -170,7 +149,7 @@ const App = () => {
                 <div
                   key={product.id}
                   className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                  onClick={() => openProductDetails(product)}
+                  onClick={() => setSelectedProduct(product)}
                 >
                   <img
                     src={product.image}
@@ -255,7 +234,7 @@ const App = () => {
 
             <p className="mt-4 opacity-90">{selectedProduct.description}</p>
 
-            {/* Кнопка связи без никнейма */}
+            {/* Кнопка связи */}
             <button
               onClick={() => {
                 const message = encodeURIComponent(
