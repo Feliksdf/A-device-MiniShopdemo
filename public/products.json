@@ -19,22 +19,6 @@
   ],
   "products": [
     {
-      "id": 4,
-      "name": "iPhone 13 Pro max",
-      "price": 50990,
-      "category": "Телефоны",
-      "image": "/images/13pmf1.jpg ",
-      "description": "Идеальное сочетание цены и качества",
-      "storage": "256 ГБ",
-      "batteryHealth": "83%",
-      "condition": "Хорошее(есть царапины на дисплее)",
-      "extraImages": [
-        "/images/13pmf2.jpg",
-        "/images/13pmf3.jpg",
-        "/images/13pmb.jpg"
-      ]
-    },
-    {
       "id": 1,
       "name": "iPhone 14 Pro max",
       "price": 60990,
@@ -63,6 +47,22 @@
         "/images/14pf2.jpg",
         "/images/14pb.jpg"
       ]
-    }
+    },
+       {
+      "id": 4,
+      "name": "iPhone 13 Pro max",
+      "price": 50990,
+      "category": "Телефоны",
+      "image": "/images/13pmf1.jpg ",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "256 ГБ",
+      "batteryHealth": "83%",
+      "condition": "Хорошее(есть царапины на дисплее)",
+      "extraImages": [
+        "/images/13pmf2.jpg",
+        "/images/13pmf3.jpg",
+        "/images/13pmb.jpg"
+      ]
+    },
   ]
 }
