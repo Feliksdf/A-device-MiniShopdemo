@@ -28,7 +28,7 @@ const App = () => {
       .catch(err => {
         console.error('Ошибка загрузки JSON:', err);
         
-        // Используем fallback данные
+        // Fallback данные
         setBanners([
           {
             id: 1,
@@ -115,7 +115,11 @@ const App = () => {
               onClick={() => handleBannerClick(banner.linkToProduct)}
               className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
             >
-              <img src={banner.image} alt={banner.title} className="w-full h-20 object-cover rounded-t-xl" />
+              <img 
+                src={banner.image} 
+                alt={banner.title} 
+                className="w-full h-20 object-cover rounded-t-xl" ← Установлен h-20
+              />
               <div className="p-4">
                 <h2 className="text-lg font-semibold">{banner.title}</h2>
                 <p className="text-sm opacity-90 mt-1">{banner.text}</p>
