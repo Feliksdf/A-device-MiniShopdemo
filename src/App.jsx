@@ -238,7 +238,7 @@ const App = () => {
             <button
               onClick={() => {
                 const message = encodeURIComponent(
-                  `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽\n\nTelegram: @feliksdf`
+                  `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽`
                 );
                 window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
