@@ -2,10 +2,10 @@
   "banners": [
     {
       "id": 1,
-      "title": "Новинки уже здесь!",
-      "text": "Скидки до 15% на iPhone 15 серии",
+      "title": "Распродажа наушников A-Pods 4 premium",
+      "text": "Скидки до 15%",
       "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
-      "image": "/images/banner-iphone.jpg",
+      "image": "/images/Apods.jpeg",
       "linkToProduct": 1
     },
     {

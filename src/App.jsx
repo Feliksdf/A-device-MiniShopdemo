@@ -200,7 +200,7 @@ const App = () => {
             <img
               src={selectedProduct.image}
               alt={selectedProduct.name}
-              className="w-full h-20 object-cover rounded-lg mb-4 cursor-zoom-in"
+              className="w-full h-64 object-cover rounded-lg mb-4 cursor-zoom-in"
               onClick={() => openFullScreen(selectedProduct.image)}
             />
 
