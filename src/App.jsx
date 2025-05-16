@@ -9,7 +9,7 @@ const App = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Fallback данные (на случай ошибки загрузки JSON)
+  // Fallback данные
   const fallbackData = {
     banners: [
       {
@@ -56,7 +56,7 @@ const App = () => {
         image: "https://placehold.co/400x400?text=iPad+Pro ",
         description: "Производительное устройство для работы и развлечений",
         extraImages: [
-          "https://placehold.co/400x400?text=iPad+Pro+2 "
+          "https://placehold.co/400x400?text=iPad+Pro+ вид+спереди"
         ]
       },
       {
@@ -67,7 +67,7 @@ const App = () => {
         image: "https://placehold.co/400x400?text=Watch+Ultra ",
         description: "Спортивные часы для активного образа жизни",
         extraImages: [
-          "https://placehold.co/400x400?text=Watch+Ultra+ вид+спереди"
+          "https://placehold.co/400x400?text=Watch+Ultra+ вид+сбоку"
         ]
       }
     ]
@@ -96,9 +96,6 @@ const App = () => {
       });
   }, []);
 
-  // Категории
-  const categories = ['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'];
-
   // Фильтрация товаров
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'Все' || product.category === selectedCategory;
@@ -118,17 +115,17 @@ const App = () => {
     setSelectedProduct(null);
   };
 
-  // Обработчик кнопки связи
+  // Обработчик связи
   const handleContact = (product) => {
     const message = encodeURIComponent(
-      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`
+      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽\n\nTelegram: @feliksdf`
     );
     window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
   };
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Заголовок магазина */}
+      {/* Шапка магазина */}
       <div className="text-center mb-6 pt-6">
         <h1 className="text-3xl font-bold">A-Device</h1>
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
@@ -145,55 +142,60 @@ const App = () => {
         />
       </div>
 
-      {/* Категории */}
-      <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-        {categories.map((category, index) => (
-          <button
-            key={index}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full whitespace-nowrap ${
-              selectedCategory === category
-                ? 'bg-cyan-500 text-black'
-                : 'bg-gray-900 hover:bg-gray-800 text-white'
-            } transition`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Баннеры акций */}
-      <div className="mb-8 px-4 max-w-4xl mx-auto space-y-4">
-        {banners.map((banner, index) => (
-          <div key={index} className={`${banner.bg} rounded-xl shadow-md p-4 text-white`}>
-            <h2 className="text-lg font-semibold">{banner.title}</h2>
-            <p className="text-sm opacity-90 mt-1">{banner.text}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Товары */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map(product => (
-            <div
-              key={product.id}
-              className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-              onClick={() => openProductDetails(product)}
-            >
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h2 className="font-semibold text-lg">{product.name}</h2>
-                <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
-              </div>
+      <div className="flex flex-col md:flex-row gap-6 px-4 max-w-6xl mx-auto">
+        {/* Баннеры слева */}
+        <div className="md:w-1/4 space-y-4">
+          {banners.map((banner, index) => (
+            <div key={index} className={`${banner.bg} rounded-xl shadow-md p-4 text-white`}>
+              <h2 className="text-lg font-semibold">{banner.title}</h2>
+              <p className="text-sm opacity-90 mt-1">{banner.text}</p>
             </div>
-          ))
-        ) : (
-          <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
-        )}
+          ))}
+        </div>
+
+        {/* Товары справа */}
+        <div className="flex-1">
+          {/* Категории */}
+          <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar">
+            {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full whitespace-nowrap ${
+                  selectedCategory === category
+                    ? 'bg-cyan-500 text-black'
+                    : 'bg-gray-900 hover:bg-gray-800 text-white'
+                } transition`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Список товаров */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map(product => (
+                <div
+                  key={product.id}
+                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+                  onClick={() => openProductDetails(product)}
+                >
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                  <div className="p-4">
+                    <h2 className="font-semibold text-lg">{product.name}</h2>
+                    <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* Модальное окно с деталями товара */}
+      {/* Модальное окно деталей товара */}
       {isModalOpen && selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
           <div className="bg-gray-900 rounded-xl p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
@@ -214,7 +216,7 @@ const App = () => {
             <p className="opacity-90 mb-4">{selectedProduct.description}</p>
 
             {/* Дополнительные фото */}
-            <div className="flex space-x-2 mb-4 overflow-x-auto no-scrollbar">
+            <div className="flex space-x-2 mb-6 overflow-x-auto no-scrollbar">
               {selectedProduct.extraImages?.map((img, i) => (
                 <img
                   key={i}
@@ -232,7 +234,7 @@ const App = () => {
               onClick={() => handleContact(selectedProduct)}
               className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
-              Связаться
+              Связаться с @feliksdf
             </button>
           </div>
         </div>
