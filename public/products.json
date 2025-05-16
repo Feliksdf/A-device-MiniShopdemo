@@ -167,7 +167,7 @@
       "id": 11,
       "name": "Картхолдер",
       "price": 550,
-      "category": "Акссесуары",
+      "category": "Аксесcуары",
       "image": "/images/carth.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -179,7 +179,7 @@
       "id": 12,
       "name": "Зарядная станция 3 в 1",
       "price": 990,
-      "category": "Акссесуары",
+      "category": "Аксесcуары",
       "image": "/images/charge3v1.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -193,15 +193,15 @@
       "id": 13,
       "name": "Блок питания usb-c org",
       "price": 2000,
-      "category": "Акссесуары",
+      "category": "Аксесcуары",
       "image": "/images/usbcor.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
       "batteryHealth": "",
       "condition": "Новые",
       "extraImages": [
-        "/images/usbcor1",
-        "/images/usbcor2"
+        "/images/usbcor1.jpg",
+        "/images/usbcor2.jpg"
       ]
     }
   ]
