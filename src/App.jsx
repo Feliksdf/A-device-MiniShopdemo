@@ -5,6 +5,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [products, setProducts] = useState([]);
+  const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Определение темы Telegram WebApp
@@ -15,16 +16,18 @@ const App = () => {
     }
   }, []);
 
-  // Загрузка товаров из products.json
+  // Загрузка товаров и баннеров из JSON
   useEffect(() => {
     fetch('/products.json')
       .then(res => res.json())
       .then(data => {
-        setProducts(data);
+        setBanners(data.banners || []);
+        setProducts(data.products || []);
         setLoading(false);
       })
       .catch(err => {
-        console.error('Ошибка загрузки данных:', err);
+        console.error('Ошибка загрузки JSON:', err);
+        setBanners([]);
         setProducts([]);
         setLoading(false);
       });
@@ -79,6 +82,16 @@ const App = () => {
           >
             {category}
           </button>
+        ))}
+      </div>
+
+      {/* Баннеры акций */}
+      <div className="mb-8 px-4 max-w-4xl mx-auto space-y-4">
+        {banners.map((banner, index) => (
+          <div key={index} className={`${banner.bg} rounded-xl shadow-md p-4 text-white`}>
+            <h2 className="text-lg font-semibold">{banner.title}</h2>
+            <p className="text-sm opacity-90 mt-1">{banner.text}</p>
+          </div>
         ))}
       </div>
 
