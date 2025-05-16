@@ -121,7 +121,7 @@ const App = () => {
   // Обработчик кнопки связи
   const handleContact = (product) => {
     const message = encodeURIComponent(
-      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽\n\nTelegram: @feliksdf`
+      `Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`
     );
     window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
   };
@@ -232,7 +232,7 @@ const App = () => {
               onClick={() => handleContact(selectedProduct)}
               className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
-              Связаться с @feliksdf
+              Связаться
             </button>
           </div>
         </div>
