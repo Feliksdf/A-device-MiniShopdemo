@@ -148,6 +148,61 @@
         "/images/Apodsmax3.jpg",
         "/images/Apodsmax4.jpg"
       ]
+    },
+    {
+      "id": 10,
+      "name": "AWatch premium",
+      "price": 2700,
+      "category": "Часы",
+      "image": "/images/AWatch.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/AWatch1.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Картхолдер",
+      "price": 550,
+      "category": "Акссесуары",
+      "image": "/images/carth.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
+    },
+    {
+      "id": 12,
+      "name": "Зарядная станция 3 в 1",
+      "price": 990,
+      "category": "Акссесуары",
+      "image": "/images/charge3v1.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/charge3v11.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Блок питания usb-c org",
+      "price": 2000,
+      "category": "Акссесуары",
+      "image": "/images/usbcor.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/usbcor1",
+        "/images/usbcor2"
+      ]
     }
   ]
 }
