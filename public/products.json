@@ -19,7 +19,7 @@
   ],
   "products": [
     {
-      "id": 1,
+      "id": 4,
       "name": "iPhone 13 Pro max",
       "price": 50990,
       "category": "Телефоны",
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "iPhone 14 Pro max",
       "price": 60990,
       "category": "Телефоны",
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "iPhone 14 Pro",
       "price": 50990,
       "category": "Телефоны",
