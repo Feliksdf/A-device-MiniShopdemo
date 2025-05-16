@@ -144,7 +144,7 @@ const App = () => {
                     src={product.image}
                     alt={product.name}
                     className="w-full h-48 object-cover"
-                    onClick={() => openProductDetails(product)} ← клик по фото → открывает карточку
+                    onClick={() => openProductDetails(product)} // ← клик по фото → открывает карточку
                   />
 
                   <div className="p-4">
@@ -191,7 +191,7 @@ const App = () => {
               onClick={() => openFullScreen(selectedProduct.image)}
             />
 
-            {/* Доп. фото */}
+            {/* Дополнительные фото */}
             <div className="flex flex-wrap gap-2 mb-4">
               {selectedProduct.extraImages?.map((img, i) => (
                 <img
