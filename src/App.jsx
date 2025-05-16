@@ -57,7 +57,7 @@ const App = () => {
       {showLogo && (
         <div className="fixed top-4 left-4 z-50 flex items-center space-x-2 cursor-pointer"
              onClick={() => setShowLogo(false)}>
-          <img "/logo.gif" alt="Логотип A-Device" className="h-12 w-auto" />
+          <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto" />
           <span className="text-cyan-500 font-bold">A-Device</span>
         </div>
       )}
