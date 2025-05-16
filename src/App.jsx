@@ -8,7 +8,7 @@ const App = () => {
   const [banners, setBanners] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [modalImage, setModalImage] = useState(null);
-  const [showLogo, setShowLogo] = useState(true); // Отображение логотипа
+  const [showLogo, setShowLogo] = useState(true);
 
   // Определение темы Telegram WebApp
   useEffect(() => {
@@ -35,20 +35,31 @@ const App = () => {
             text: "Скидки до 15% на iPhone 15 серии",
             bg: "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
             image: "https://placehold.co/600x200?text=New+iPhone+15+Pro ",
-            linkToProduct": 1
+            linkToProduct: 1
           }
         ]);
         setProducts([
           {
-            id": 1,
-            name": "iPhone 15 Pro",
-            price": 89990,
-            category": "Телефоны",
-            image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
-            description": "Новый iPhone с титановой рамкой и улучшенной камерой",
-            storage": "256 ГБ",
-            batteryHealth": "95%",
-            condition": "Идеальное"
+            id: 1,
+            name: "iPhone 15 Pro",
+            price: 89990,
+            category: "Телефоны",
+            image: "https://placehold.co/400x400?text=iPhone+15+Pro ",
+            description: "Новый iPhone с титановой рамкой и улучшенной камерой",
+            storage: "256 ГБ",
+            batteryHealth: "95%",
+            condition: "Идеальное"
+          },
+          {
+            id: 2,
+            name: "MacBook Air M3",
+            price: 119990,
+            category: "Ноутбуки",
+            image: "https://placehold.co/400x400?text=MacBook+Air+M3 ",
+            description: "Легкий и мощный ноутбук Apple на чипе M3",
+            storage: "1 ТБ SSD",
+            batteryHealth: "100%",
+            condition: "Новый"
           }
         ]);
       });
