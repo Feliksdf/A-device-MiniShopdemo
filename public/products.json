@@ -119,6 +119,35 @@
         "/images/2Apods1.jpg",
         "/images/2Apods2.jpg"
       ]
+    },
+    {
+      "id": 8,
+      "name": "Buds FE premium",
+      "price": 1300,
+      "category": "Наушники",
+      "image": "/images/buds.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
+    },
+    {
+      "id": 9,
+      "name": "Apods Max premium",
+      "price": 2500,
+      "category": "Наушники",
+      "image": "/images/Apodsmax.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/Apodsmax1.jpg"
+        "/images/Apodsmax2.jpg"
+        "/images/Apodsmax3.jpg"
+        "/images/Apodsmax4.jpg"
+      ]
     }
   ]
 }
