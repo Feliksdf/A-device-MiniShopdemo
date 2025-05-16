@@ -64,7 +64,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "iPhone 13 Pro Max",
       "price": 50990,
       "category": "Телефоны",
@@ -78,6 +78,20 @@
         "/images/13pmf3.jpg",
         "/images/13pmb.jpg"
       ]
-    }
+    },
+    {
+      "id": 5,
+      "name": "MacBook air “13 m2",
+      "price": 64499,
+      "category": "ноутбуки",
+      "image": "/images/mac.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "256 ГБ",
+      "batteryHealth": "92%",
+      "condition": "Идеальное",
+      "extraImages": [
+        "/images/mac1.jpg"
+      ]
+    },
   ]
 }
