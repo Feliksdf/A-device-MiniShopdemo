@@ -12,12 +12,19 @@
     "price": 119990,
     "category": "Ноутбуки",
     "image": "https://placehold.co/400x400?text=MacBook+Air+M3 "
-  }
+  },
   {
-  "id": 3,
-  "name": "iPad Pro",
-  "price": 69990,
-  "category": "Планшеты",
-  "image": "https://placehold.co/400x400?text=iPad+Pro "
-}
+    "id": 3,
+    "name": "iPad Pro",
+    "price": 69990,
+    "category": "Планшеты",
+    "image": "https://placehold.co/400x400?text=iPad+Pro "
+  },
+  {
+    "id": 4,
+    "name": "Apple Watch Ultra",
+    "price": 49990,
+    "category": "Часы",
+    "image": "https://placehold.co/400x400?text=Watch+Ultra "
+  }
 ]

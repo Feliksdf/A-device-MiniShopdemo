@@ -4,17 +4,8 @@ const App = () => {
   const [theme, setTheme] = useState('dark');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все');
-
-  // Товары загружаются из products.json
   const [products, setProducts] = useState([]);
-
-  // Загрузка товаров при монтировании
-  useEffect(() => {
-    fetch('/products.json')
-      .then(res => res.json())
-      .then(data => setProducts(data))
-      .catch(err => console.error('Ошибка загрузки товаров:', err));
-  }, []);
+  const [loading, setLoading] = useState(true);
 
   // Определение темы Telegram WebApp
   useEffect(() => {
@@ -24,6 +15,24 @@ const App = () => {
     }
   }, []);
 
+  // Загрузка товаров из products.json
+  useEffect(() => {
+    fetch('/products.json')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Ошибка загрузки данных:', err);
+        setProducts([]);
+        setLoading(false);
+      });
+  }, []);
+
+  // Категории
+  const categories = ['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'];
+
   // Фильтрация товаров
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'Все' || product.category === selectedCategory;
@@ -31,7 +40,7 @@ const App = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Клик по кнопке "Связаться"
+  // Обработчик связи через Telegram
   const handleContact = (product) => {
     const message = encodeURIComponent(`Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`);
     window.open(`https://t.me/feliksdf?text= ${message}`, '_blank');
@@ -39,7 +48,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Заголовок */}
+      {/* Заголовок магазина */}
       <div className="text-center mb-6 pt-6">
         <h1 className="text-3xl font-bold">A-Device</h1>
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
@@ -58,7 +67,7 @@ const App = () => {
 
       {/* Категории */}
       <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-        {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
+        {categories.map((category, index) => (
           <button
             key={index}
             onClick={() => setSelectedCategory(category)}
@@ -75,7 +84,9 @@ const App = () => {
 
       {/* Товары */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto">
-        {filteredProducts.length > 0 ? (
+        {loading ? (
+          <p className="col-span-full text-center py-8 opacity-70">⏳ Загрузка...</p>
+        ) : filteredProducts.length > 0 ? (
           filteredProducts.map(product => (
             <div
               key={product.id}
