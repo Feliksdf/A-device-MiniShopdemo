@@ -204,7 +204,7 @@ const App = () => {
               ))}
             </div>
 
-            <h2 className="text-4xl font-bold mb-2">{selectedProduct.name}</h2>
+            <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
             <p className="opacity-90 mb-2">💰 Цена: <strong>{selectedProduct.price?.toLocaleString()} ₽</strong></p>
 
             {selectedProduct.storage && (
