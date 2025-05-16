@@ -48,7 +48,11 @@ const App = () => {
             description: "Новый iPhone с титановой рамкой и улучшенной камерой",
             storage: "256 ГБ",
             batteryHealth: "95%",
-            condition: "Идеальное"
+            condition: "Идеальное",
+            extraImages: [
+              "https://placehold.co/400x400?text= Камера+iPhone",
+              "https://placehold.co/400x400?text= Титановая рамка"
+            ]
           },
           {
             id: 2,
@@ -83,6 +87,11 @@ const App = () => {
     if (product) setSelectedProduct(product);
   };
 
+  // При клике на товар → открываем детали
+  const openProductDetails = (product) => {
+    setSelectedProduct(product);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Анимированный логотип */}
@@ -91,13 +100,19 @@ const App = () => {
           className="fixed top-4 left-4 z-50 cursor-pointer animate-pulse"
           onClick={() => setShowLogo(false)}
         >
-          <img src="/logo.gif" alt="Логотип A-Device" className="h-16 w-auto rounded-full" />
+          <img 
+            src="/logo.gif" 
+            alt="Логотип A-Device" 
+            className="h-16 w-auto rounded-full" 
+          />
         </div>
       )}
 
       {/* Шапка магазина */}
       <div className="text-center mb-6 pt-6 mt-20">
-        <h1 className="text-3xl font-bold">📱 A-Device</h1>
+        {!showLogo && (
+          <h1 className="text-3xl font-bold">📱 A-Device</h1>
+        )}
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
       </div>
 
@@ -238,7 +253,7 @@ const App = () => {
               <p className="opacity-90 mb-4">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
             )}
 
-            <p className="opacity-90 mb-4">{selectedProduct.description}</p>
+            <p className="mt-4 opacity-90">{selectedProduct.description}</p>
 
             {/* Кнопка связи без никнейма */}
             <button
@@ -248,7 +263,7 @@ const App = () => {
                 );
                 window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
-              className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
+              className="mt-4 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
               Связаться
             </button>
