@@ -95,11 +95,15 @@
     },
     {
       "id": 6,
-      "name": "Apods4 Premium",
+      "name": "AirPods 4 Premium",
       "price": 1890,
       "category": "Наушники",
       "image": "/images/Apods.jpg",
       "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
     }
   ]
 }
