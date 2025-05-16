@@ -104,6 +104,21 @@
       "batteryHealth": "",
       "condition": "Новые",
       "extraImages": []
+    },
+    {
+      "id": 7,
+      "name": "Apods 2 pro Premium",
+      "price": 2900,
+      "category": "Наушники",
+      "image": "/images/2Apods.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/2Apods1.jpg",
+        "/images/2Apods2.jpg"
+      ]
     }
   ]
 }
