@@ -24,7 +24,7 @@ const App = () => {
     products: [
       {
         id: 1,
-        name: "iPhone 15 Pro",
+        name: "iPhone 14 Pro max 128gb",
         price: 89990,
         category: "Телефоны",
         image: "https://placehold.co/400x400?text=iPhone+15+Pro "
