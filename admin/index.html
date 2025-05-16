@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | A-Device</title>
+
+  <!-- Tailwind через CDN -->
+  <script src="https://cdn.tailwindcss.com "></script>
+
+  <!-- Стили -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen p-6">
+  <h1 class="text-2xl font-bold mb-6">📦 Управление товарами</h1>
+
+  <!-- Форма добавления нового товара -->
+  <form id="productForm" class="space-y-4 mb-8">
+    <input type="text" name="name" placeholder="Название товара" required class="bg-gray-900 px-4 py-2 rounded w-full" />
+    <input type="number" name="price" placeholder="Цена" required class="bg-gray-900 px-4 py-2 rounded w-full" />
+    <input type="text" name="image" placeholder="Ссылка на изображение" class="bg-gray-900 px-4 py-2 rounded w-full" />
+
+    <select name="category" class="bg-gray-900 px-4 py-2 rounded w-full">
+      <option value="Телефоны">Телефоны</option>
+      <option value="Ноутбуки">Ноутбуки</option>
+      <option value="Планшеты">Планшеты</option>
+      <option value="Часы">Часы</option>
+      <option value="Наушники">Наушники</option>
+      <option value="Аксессуары">Аксессуары</option>
+    </select>
+
+    <textarea name="description" placeholder="Описание товара" rows="3" class="bg-gray-900 px-4 py-2 rounded w-full"></textarea>
+
+    <button type="submit" class="mt-2 bg-cyan-500 hover:bg-cyan-600 text-black py-2 px-4 rounded transition">
+      Добавить товар
+    </button>
+  </form>
+
+  <!-- Список товаров -->
+  <div id="productsList" class="space-y-4"></div>
+
+  <!-- Модальное окно редактирования -->
+  <div id="editModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black bg-opacity-90">
+    <div class="bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full relative">
+      <button onclick="closeEditModal()" class="absolute top-2 right-2 text-gray-400 hover:text-white text-xl">×</button>
+      
+      <h2 class="text-xl font-bold mb-4">Редактировать товар</h2>
+      <form id="editProductForm" class="space-y-4">
+        <input type="text" name="name" placeholder="Название" class="bg-gray-800 px-4 py-2 rounded w-full" />
+        <input type="number" name="price" placeholder="Цена" class="bg-gray-800 px-4 py-2 rounded w-full" />
+        <input type="text" name="image" placeholder="Ссылка на изображение" class="bg-gray-800 px-4 py-2 rounded w-full" />
+        
+        <select name="category" class="bg-gray-800 px-4 py-2 rounded w-full">
+          <option value="Телефоны">Телефоны</option>
+          <option value="Ноутбуки">Ноутбуки</option>
+          <option value="Планшеты">Планшеты</option>
+          <option value="Часы">Часы</option>
+          <option value="Наушники">Наушники</option>
+          <option value="Аксессуары">Аксессуары</option>
+        </select>
+
+        <textarea name="description" placeholder="Описание" rows="3" class="bg-gray-800 px-4 py-2 rounded w-full"></textarea>
+
+        <div class="flex space-x-2 mt-4">
+          <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-black py-2 px-4 rounded transition">Сохранить</button>
+          <button type="button" onclick="closeEditModal()" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS скрипт -->
+  <script src="/admin/admin.js"></script>
+</body>
+</html>
