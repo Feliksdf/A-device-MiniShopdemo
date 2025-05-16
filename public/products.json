@@ -10,11 +10,11 @@
     },
     {
       "id": 2,
-      "title": "Рассрочка 0%",
-      "text": "На всю технику Apple",
+      "title": "Сервисный центр A-Device",
+      "text": "Быстрый и качественный ремонт",
       "bg": "bg-gradient-to-r from-teal-900 via-black to-teal-950",
-      "image": "/images/banner-macbook.jpg",
-      "linkToProduct": 4
+      "image": "/images/remont.jpeg",
+      "linkToProduct": ""
     }
   ],
   "products": [
