@@ -6,8 +6,8 @@ const App = () => {
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [products, setProducts] = useState([]);
   const [banners, setBanners] = useState([]);
-  const [modalImage, setModalImage] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalImage, setModalImage] = useState(null);
 
   // Определение темы Telegram WebApp
   useEffect(() => {
@@ -39,23 +39,15 @@ const App = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Открытие карточки товара
-  const openProductDetails = (product) => {
-    setSelectedProduct(product);
+  // Открытие модального окна с товаром
+  const openProductDetails = (productId) => {
+    const product = products.find(p => p.id === productId);
+    if (product) setSelectedProduct(product);
   };
 
-  // Закрытие карточки товара
-  const closeProductDetails = () => {
-    setSelectedProduct(null);
-  };
-
-  // Открытие фото на весь экран
+  // Открытие полноразмерного фото
   const openFullScreen = (url) => {
     setModalImage(url);
-  };
-
-  const closeFullScreen = () => {
-    setModalImage(null);
   };
 
   return (
@@ -77,75 +69,79 @@ const App = () => {
         />
       </div>
 
-      {/* Баннеры сверху */}
-      <div className="mb-8 px-4 max-w-4xl mx-auto space-y-4">
-        {banners.map((banner, index) => (
-          <div
-            key={index}
-            onClick={() => openProductDetails(products.find(p => p.id === banner.linkToProduct))}
-            className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
-          >
-            <img src={banner.image} alt={banner.title} className="w-full h-32 object-cover rounded-t-xl" />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold">{banner.title}</h2>
-              <p className="text-sm opacity-90 mt-1">{banner.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Категории */}
-      <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-        {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
-          <button
-            key={index}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full whitespace-nowrap ${
-              selectedCategory === category
-                ? 'bg-cyan-500 text-black'
-                : 'bg-gray-900 hover:bg-gray-800 text-white'
-            } transition`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Товары */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map(product => (
+      <div className="flex flex-col md:flex-row gap-6 px-4 max-w-6xl mx-auto">
+        {/* Баннеры слева */}
+        <div className="md:w-1/4 space-y-4">
+          {banners.map((banner, index) => (
             <div
-              key={product.id}
-              className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-              onClick={() => openProductDetails(product)}
+              key={index}
+              onClick={() => openProductDetails(banner.linkToProduct)}
+              className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover cursor-zoom-in"
-                onClick={(e) => {
-                  e.stopPropagation(); // Не открываем карточку при клике на фото
-                  openFullScreen(product.image);
-                }}
-              />
-
+              <img src={banner.image} alt={banner.title} className="w-full h-32 object-cover rounded-t-xl" />
               <div className="p-4">
-                <h2 className="font-semibold text-lg">{product.name}</h2>
-                <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
+                <h2 className="text-lg font-semibold">{banner.title}</h2>
+                <p className="text-sm opacity-90 mt-1">{banner.text}</p>
               </div>
             </div>
-          ))
-        ) : (
-          <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
-        )}
+          ))}
+        </div>
+
+        <div className="flex-1">
+          {/* Категории */}
+          <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar">
+            {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full whitespace-nowrap ${
+                  selectedCategory === category
+                    ? 'bg-cyan-500 text-black'
+                    : 'bg-gray-900 hover:bg-gray-800 text-white'
+                } transition`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Товары справа */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map(product => (
+                <div
+                  key={product.id}
+                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+                  onClick={() => setSelectedProduct(product)}
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover cursor-zoom-in"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openFullScreen(product.image);
+                    }}
+                  />
+
+                  <div className="p-4">
+                    <h2 className="font-semibold text-lg">{product.name}</h2>
+                    <p className="text-sm opacity-70 mt-1">от {product.price.toLocaleString()} ₽</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Модальное окно с полноразмерным фото */}
       {modalImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-          onClick={closeFullScreen}
+          onClick={() => setModalImage(null)}
         >
           <img
             src={modalImage}
@@ -161,7 +157,7 @@ const App = () => {
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-90">
           <div className="bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full relative">
             <button
-              onClick={closeProductDetails}
+              onClick={() => setSelectedProduct(null)}
               className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl">×</button>
 
             <img
@@ -171,25 +167,32 @@ const App = () => {
               onClick={() => openFullScreen(selectedProduct.image)}
             />
 
-            <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
+            {selectedProduct.extraImages?.map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt={`Доп. фото ${i + 1}`}
+                className="w-24 h-24 object-cover rounded mt-2 mr-2 inline-block cursor-pointer"
+                onClick={() => openFullScreen(img)}
+              />
+            ))}
 
-            <p className="opacity-90 mb-2">💰 Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
+            <h2 className="text-2xl font-bold mt-4">{selectedProduct.name}</h2>
+            <p className="opacity-90 mt-2">💰 Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
 
             {selectedProduct.storage && (
-              <p className="opacity-90 mb-2">📦 Память: <strong>{selectedProduct.storage}</strong></p>
+              <p className="opacity-90 mt-2">📦 Память: <strong>{selectedProduct.storage}</strong></p>
             )}
 
             {selectedProduct.batteryHealth && (
-              <p className="opacity-90 mb-2">🔋 Батарея: <strong>{selectedProduct.batteryHealth}</strong></p>
+              <p className="opacity-90 mt-2">🔋 Батарея: <strong>{selectedProduct.batteryHealth}</strong></p>
             )}
 
             {selectedProduct.condition && (
-              <p className="opacity-90 mb-4">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
+              <p className="opacity-90 mt-2">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
             )}
 
-            {selectedProduct.description && (
-              <p className="opacity-90 mb-4">{selectedProduct.description}</p>
-            )}
+            <p className="mt-4 opacity-90">{selectedProduct.description}</p>
 
             <button
               onClick={() => {
@@ -198,7 +201,7 @@ const App = () => {
                 );
                 window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
-              className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
+              className="mt-4 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
               Связаться с @feliksdf
             </button>

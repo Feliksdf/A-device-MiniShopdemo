@@ -1,5 +1,22 @@
 {
-  "banners": [],
+  "banners": [
+    {
+      "id": 1,
+      "title": "Новинки уже здесь!",
+      "text": "Скидки до 15% на iPhone 15 серии",
+      "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
+      "image": "https://placehold.co/600x200?text=New+iPhone+15+Pro ",
+      "linkToProduct": 1
+    },
+    {
+      "id": 2,
+      "title": "Рассрочка 0%",
+      "text": "На всю технику Apple",
+      "bg": "bg-gradient-to-r from-teal-900 via-black to-teal-950",
+      "image": "https://placehold.co/600x200?text=Apple+Promo ",
+      "linkToProduct": 2
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -10,7 +27,11 @@
       "description": "Новый iPhone с титановой рамкой и улучшенной камерой",
       "storage": "256 ГБ",
       "batteryHealth": "95%",
-      "condition": "Идеальное"
+      "condition": "Идеальное",
+      "extraImages": [
+        "https://placehold.co/400x400?text= Камера+iPhone",
+        "https://placehold.co/400x400?text= Титановая рамка"
+      ]
     },
     {
       "id": 2,
@@ -21,7 +42,11 @@
       "description": "Легкий и мощный ноутбук Apple на чипе M3",
       "storage": "1 ТБ SSD",
       "batteryHealth": "100%",
-      "condition": "Новый"
+      "condition": "Новый",
+      "extraImages": [
+        "https://placehold.co/400x400?text= Макбук+сбоку",
+        "https://placehold.co/400x400?text= Работа+на+M3"
+      ]
     }
   ]
 }
