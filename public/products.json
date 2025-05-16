@@ -14,14 +14,14 @@
   "products": [
     {
       "id": 1,
-      "name": "iPhone 14 Pro",
-      "price": 10000,
+      "name": "iPhone 13 Pro max 256gb",
+      "price": 50990,
       "category": "Телефоны",
-      "image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
-      "description": "Новый iPhone с титановой рамкой",
+      "image": "/images/13pmf1.jpg",
+      "description": "отличный айфон в стильном дизайне",
       "extraImages": [
-        "https://placehold.co/400x400?text= Камера+iPhone",
-        "https://placehold.co/400x400?text= Титановая рамка"
+        "/images/13pmf2.jpg",
+        "/images/13pmb.jpg"
       ]
     },
     {
