@@ -8,7 +8,6 @@ const App = () => {
   const [banners, setBanners] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [modalImage, setModalImage] = useState(null);
-  const [showLogo, setShowLogo] = useState(true); // Показать / скрыть логотип
 
   // Определение темы Telegram WebApp
   useEffect(() => {
@@ -51,22 +50,16 @@ const App = () => {
     if (product) setSelectedProduct(product);
   };
 
+  // При клике на товар → открываем детали
+  const openProductDetails = (product) => {
+    setSelectedProduct(product);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Анимированный логотип */}
-      {showLogo && (
-        <div className="fixed top-4 left-4 z-50 flex items-center space-x-2 cursor-pointer"
-             onClick={() => setShowLogo(false)}>
-          <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto" />
-          <span className="text-cyan-500 font-bold">A-Device</span>
-        </div>
-      )}
-
       {/* Шапка магазина */}
-      <div className="text-center mb-6 pt-6 mt-16">
-        {!showLogo && (
-          <h1 className="text-3xl font-bold">📱 A-Device</h1>
-        )}
+      <div className="text-center mb-6 pt-6">
+        <h1 className="text-3xl font-bold">📱 A-Device</h1>
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
       </div>
 
@@ -124,7 +117,7 @@ const App = () => {
                 <div
                   key={product.id}
                   className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                  onClick={() => setSelectedProduct(product)}
+                  onClick={() => openProductDetails(product)}
                 >
                   <img
                     src={product.image}
@@ -207,7 +200,7 @@ const App = () => {
               <p className="opacity-90 mb-4">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
             )}
 
-            <p className="mt-4 opacity-90">{selectedProduct.description}</p>
+            <p className="opacity-90 mb-4">{selectedProduct.description}</p>
 
             {/* Кнопка связи без никнейма */}
             <button
@@ -217,7 +210,7 @@ const App = () => {
                 );
                 window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
-              className="mt-4 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
+              className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
               Связаться
             </button>
