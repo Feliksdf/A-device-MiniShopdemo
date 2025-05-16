@@ -27,28 +27,16 @@ const App = () => {
       })
       .catch(err => {
         console.error('Ошибка загрузки JSON:', err);
-        
-        // Используем fallback данные
-        setBanners([
-          {
-            id: 1,
-            title: "Новинки уже здесь!",
-            text: "Скидки до 15% на iPhone 15 серии",
-            bg: "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
-            image: "https://placehold.co/600x200?text=New+iPhone+15+Pro ",
-            linkToProduct: 1
-          }
-        ]);
         setProducts([
           {
             id: 1,
-            name: "iPhone 15 Pro",
-            price: 89990,
+            name: "iPhone 14 Pro Max",
+            price: 60990,
             category: "Телефоны",
-            image: "https://placehold.co/400x400?text=iPhone+15+Pro ",
-            description: "Новый iPhone с титановой рамкой и улучшенной камерой",
-            storage: "256 ГБ",
-            batteryHealth: "95%",
+            image: "https://placehold.co/400x400?text=iPhone+14+Pro+Max ",
+            description: "Идеальное сочетание цены и качества",
+            storage: "128 ГБ",
+            batteryHealth: "88%",
             condition: "Идеальное"
           },
           {
@@ -78,20 +66,17 @@ const App = () => {
     setModalImage(url);
   };
 
-  // При клике на баннер → открываем товар
-  const handleBannerClick = (productId) => {
-    const product = products.find(p => p.id === productId);
-    if (product) setSelectedProduct(product);
+  // При клике на товар → открываем карточку
+  const openProductDetails = (product) => {
+    setSelectedProduct(product);
   };
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Шапка магазина с логотипом */}
+      {/* Шапка магазина */}
       <div className="text-center mb-6 pt-6 flex flex-col items-center justify-center">
-        <div className="flex items-center space-x-3 justify-center">
-          <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto rounded-full" />
-          <h1 className="text-3xl font-bold">A-Device</h1>
-        </div>
+        <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto rounded-full mb-2 animate-pulse" />
+        <h1 className="text-3xl font-bold">A-Device</h1>
         <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
       </div>
 
@@ -112,10 +97,14 @@ const App = () => {
           {banners.map((banner, index) => (
             <div
               key={index}
-              onClick={() => handleBannerClick(banner.linkToProduct)}
+              onClick={() => setSelectedProduct(products.find(p => p.id === banner.linkToProduct))}
               className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
             >
-              <img src={banner.image} alt={banner.title} className="w-full h-20 object-cover rounded-t-xl" />
+              <img
+                src={banner.image}
+                alt={banner.title}
+                className="w-full h-32 object-cover rounded-t-xl"
+              />
               <div className="p-4">
                 <h2 className="text-lg font-semibold">{banner.title}</h2>
                 <p className="text-sm opacity-90 mt-1">{banner.text}</p>
@@ -127,7 +116,7 @@ const App = () => {
         <div className="flex-1">
           {/* Категории */}
           <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-            {[ 'Все', 'iPhone', 'iPhone new', 'Аксессуары', 'Macbook', 'Наушники', 'Игровые приставки', 'Часы', 'Красота' ].map((category, index) => (
+            {['Все', 'Iphone', 'Iphone new', 'Аксессуары', 'Ноутбуки', 'Наушники', 'Игровые приставки', 'Часы', 'Красота'].map((category, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedCategory(category)}
@@ -148,17 +137,14 @@ const App = () => {
               filteredProducts.map(product => (
                 <div
                   key={product.id}
-                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                  onClick={() => setSelectedProduct(product)}
+                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 cursor-pointer"
                 >
+                  {/* Клик по фото → открывает карточку */}
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-48 object-cover cursor-zoom-in"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openFullScreen(product.image);
-                    }}
+                    className="w-full h-48 object-cover"
+                    onClick={() => openProductDetails(product)} ← клик по фото → открывает карточку
                   />
 
                   <div className="p-4">
@@ -197,6 +183,7 @@ const App = () => {
               onClick={() => setSelectedProduct(null)}
               className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl">×</button>
 
+            {/* Клик по фото в карточке → открывает полноразмерное фото */}
             <img
               src={selectedProduct.image}
               alt={selectedProduct.name}
@@ -204,7 +191,7 @@ const App = () => {
               onClick={() => openFullScreen(selectedProduct.image)}
             />
 
-            {/* Дополнительные фото */}
+            {/* Доп. фото */}
             <div className="flex flex-wrap gap-2 mb-4">
               {selectedProduct.extraImages?.map((img, i) => (
                 <img
@@ -238,7 +225,7 @@ const App = () => {
             <button
               onClick={() => {
                 const message = encodeURIComponent(
-                  `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽\n`
+                  `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽\n\nTelegram: @feliksdf`
                 );
                 window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
