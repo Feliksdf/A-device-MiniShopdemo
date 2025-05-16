@@ -16,7 +16,7 @@ const App = () => {
     }
   }, []);
 
-  // Загрузка товаров и баннеров из JSON
+  // Загрузка товаров и баннеров
   useEffect(() => {
     fetch('/products.json')
       .then(res => res.json())
@@ -26,15 +26,12 @@ const App = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error('Ошибка загрузки JSON:', err);
+        console.error('Ошибка загрузки:', err);
         setBanners([]);
         setProducts([]);
         setLoading(false);
       });
   }, []);
-
-  // Категории
-  const categories = ['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'];
 
   // Фильтрация товаров
   const filteredProducts = products.filter(product => {
@@ -43,7 +40,7 @@ const App = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Обработчик связи через Telegram
+  // Кнопка связи через Telegram
   const handleContact = (product) => {
     const message = encodeURIComponent(`Здравствуйте! Хочу купить: ${product.name} за ${product.price}₽`);
     window.open(`https://t.me/feliksdf?text= ${message}`, '_blank');
@@ -70,7 +67,7 @@ const App = () => {
 
       {/* Категории */}
       <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-        {categories.map((category, index) => (
+        {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
           <button
             key={index}
             onClick={() => setSelectedCategory(category)}
