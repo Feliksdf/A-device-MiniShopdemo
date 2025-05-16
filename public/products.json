@@ -309,6 +309,42 @@
       "batteryHealth": "",
       "condition": "Новые",
       "extraImages": []
+    },
+    {
+      "id": 22,
+      "name": "Чехлы для iPhone",
+      "price": 399,
+      "category": "Аксессуары",
+      "image": "/images/chehli.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
+    },
+    {
+      "id": 23,
+      "name": "Чехлы для iPhone",
+      "price": 199,
+      "category": "Аксессуары",
+      "image": "/images/chehli1.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
+    },
+    {
+      "id": 21,
+      "name": "Стекла на iPhone",
+      "price": 4099,
+      "category": "Аксессуары",
+      "image": "/images/glass.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
     }
   ]
 }
