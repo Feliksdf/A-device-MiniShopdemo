@@ -36,14 +36,34 @@
     },
     {
       "id": 2,
-      "name": "MacBook Air M3",
-      "price": 119990,
-      "category": "Ноутбуки",
-      "image": "https://placehold.co/400x400?text=MacBook+Air+M3 ",
-      "description": "Легкий и мощный ноутбук Apple на чипе M3",
-      "storage": "1 ТБ SSD",
-      "batteryHealth": "100%",
-      "condition": "Новый"
+      "name": "iPhone 14 Pro max",
+      "price": 60990,
+      "category": "Телефоны",
+      "image": "/images/14pmf1.jpg ",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "128 ГБ",
+      "batteryHealth": "88%",
+      "condition": "Идеал",
+      "extraImages": [
+        "/images/14pmf2.jpg",
+        "/images/14pmb.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "iPhone 13 Pro max",
+      "price": 50990,
+      "category": "Телефоны",
+      "image": "/images/13pmf1.jpg ",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "256 ГБ",
+      "batteryHealth": "83%",
+      "condition": "Хорошее(есть царапины на дисплее)",
+      "extraImages": [
+        "/images/13pmf2.jpg",
+        "/images/13pmf3.jpg",
+        "/images/13pmb.jpg"
+      ]
     }
   ]
 }
