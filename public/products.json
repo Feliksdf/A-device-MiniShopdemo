@@ -269,6 +269,46 @@
       "batteryHealth": "",
       "condition": "Новые",
       "extraImages": []
+    },
+    {
+      "id": 19,
+      "name": "Выпрямитель для волос",
+      "price": 3490,
+      "category": "Красота",
+      "image": "/images/wireles.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/wireles1.jpg"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Фен Supersonic HD15",
+      "price": 4900,
+      "category": "Красота",
+      "image": "/images/HD15.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/1HD15.jpg"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Supersonic HD08",
+      "price": 4099,
+      "category": "Красота",
+      "image": "/images/HD08.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
     }
   ]
 }
