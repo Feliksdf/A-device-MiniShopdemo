@@ -20,17 +20,18 @@
   "products": [
     {
       "id": 1,
-      "name": "iPhone 15 Pro",
-      "price": 89990,
+      "name": "iPhone 13 Pro max",
+      "price": 50990,
       "category": "Телефоны",
-      "image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
-      "description": "Новый iPhone с титановой рамкой и улучшенной камерой",
+      "image": "/images/13pmf1.jpg ",
+      "description": "Идеальное сочетание цены и качества",
       "storage": "256 ГБ",
-      "batteryHealth": "95%",
-      "condition": "Идеальное",
+      "batteryHealth": "83%",
+      "condition": "Хорошее(есть царапины на дисплее)",
       "extraImages": [
-        "https://placehold.co/400x400?text= Камера+iPhone",
-        "https://placehold.co/400x400?text= Титановая рамка"
+        "/images/13pmf2/jpg",
+        "/images/13pmf3.jpg",
+        "/images/13pmb.jpg"
       ]
     },
     {
