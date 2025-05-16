@@ -35,6 +35,17 @@
         "https://placehold.co/400x400?text= Макбук+сбоку",
         "https://placehold.co/400x400?text= Работа+на+M3"
       ]
-    }
+    },
+    {
+  "id": 4,
+  "name": "iPad Pro",
+  "price": 69990,
+  "category": "Планшеты",
+  "image": "https.id: //placehold.co/400x400?text=iPad+Pro",
+  "description": "Производительное устройство для работы и развлечений",
+  "extraImages": [
+    "https://placehold.co/400x400?text=iPad+Pro+ вид+спереди"
+  ]
+}
   ]
 }
