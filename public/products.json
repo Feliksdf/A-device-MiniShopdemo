@@ -9,7 +9,7 @@
   "products": [
     {
       "id": 1,
-      "name": "iPhone 14 Pro",
+      "name": "iPhone 15 Pro",
       "price": 89990,
       "category": "Телефоны",
       "image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
@@ -30,18 +30,6 @@
         "https://placehold.co/400x400?text= Макбук+сбоку",
         "https://placehold.co/400x400?text= Работа+на+M3"
       ]
-    },
-    {
-      "id": 3,
-      "name": "iPhone 14 Pro max",
-      "price": 60990,
-      "category": "Телефоны",
-      "image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
-      "description": "б/у iPhone с титановой рамкой",
-      "extraImages": [
-        "https://placehold.co/400x400?text= Камера+iPhone",
-        "https://placehold.co/400x400?text= Титановая рамка"
-      ]
-    },
+    }
   ]
 }
