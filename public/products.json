@@ -42,11 +42,7 @@
       "description": "Легкий и мощный ноутбук Apple на чипе M3",
       "storage": "1 ТБ SSD",
       "batteryHealth": "100%",
-      "condition": "Новый",
-      "extraImages": [
-        "https://placehold.co/400x400?text= Макбук+сбоку",
-        "https://placehold.co/400x400?text= Работа+на+M3"
-      ]
+      "condition": "Новый"
     }
   ]
 }

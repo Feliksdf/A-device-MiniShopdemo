@@ -39,15 +39,20 @@ const App = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Открытие модального окна с товаром
-  const openProductDetails = (productId) => {
+  // Открытие полноразмерного фото
+  const openFullScreen = (url) => {
+    setModalImage(url);
+  };
+
+  // При клике на баннер → открываем товар
+  const handleBannerClick = (productId) => {
     const product = products.find(p => p.id === productId);
     if (product) setSelectedProduct(product);
   };
 
-  // Открытие полноразмерного фото
-  const openFullScreen = (url) => {
-    setModalImage(url);
+  // При клике на товар → открываем детали
+  const openProductDetails = (product) => {
+    setSelectedProduct(product);
   };
 
   return (
@@ -75,7 +80,7 @@ const App = () => {
           {banners.map((banner, index) => (
             <div
               key={index}
-              onClick={() => openProductDetails(banner.linkToProduct)}
+              onClick={() => handleBannerClick(banner.linkToProduct)}
               className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
             >
               <img src={banner.image} alt={banner.title} className="w-full h-32 object-cover rounded-t-xl" />
@@ -89,7 +94,7 @@ const App = () => {
 
         <div className="flex-1">
           {/* Категории */}
-          <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar">
+          <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
             {['Все', 'Телефоны', 'Ноутбуки', 'Планшеты', 'Часы', 'Наушники', 'Аксессуары'].map((category, index) => (
               <button
                 key={index}
@@ -112,7 +117,7 @@ const App = () => {
                 <div
                   key={product.id}
                   className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                  onClick={() => setSelectedProduct(product)}
+                  onClick={() => openProductDetails(product)}
                 >
                   <img
                     src={product.image}
@@ -167,33 +172,37 @@ const App = () => {
               onClick={() => openFullScreen(selectedProduct.image)}
             />
 
-            {selectedProduct.extraImages?.map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt={`Доп. фото ${i + 1}`}
-                className="w-24 h-24 object-cover rounded mt-2 mr-2 inline-block cursor-pointer"
-                onClick={() => openFullScreen(img)}
-              />
-            ))}
+            {/* Дополнительные фото */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {selectedProduct.extraImages?.map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt={`Доп. фото ${i + 1}`}
+                  className="w-20 h-20 object-cover rounded cursor-pointer"
+                  onClick={() => openFullScreen(img)}
+                />
+              ))}
+            </div>
 
-            <h2 className="text-2xl font-bold mt-4">{selectedProduct.name}</h2>
-            <p className="opacity-90 mt-2">💰 Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
+            <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
+            <p className="opacity-90 mb-2">💰 Цена: <strong>{selectedProduct.price.toLocaleString()} ₽</strong></p>
 
             {selectedProduct.storage && (
-              <p className="opacity-90 mt-2">📦 Память: <strong>{selectedProduct.storage}</strong></p>
+              <p className="opacity-90 mb-2">📦 Память: <strong>{selectedProduct.storage}</strong></p>
             )}
 
             {selectedProduct.batteryHealth && (
-              <p className="opacity-90 mt-2">🔋 Батарея: <strong>{selectedProduct.batteryHealth}</strong></p>
+              <p className="opacity-90 mb-2">🔋 Батарея: <strong>{selectedProduct.batteryHealth}</strong></p>
             )}
 
             {selectedProduct.condition && (
-              <p className="opacity-90 mt-2">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
+              <p className="opacity-90 mb-4">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
             )}
 
-            <p className="mt-4 opacity-90">{selectedProduct.description}</p>
+            <p className="opacity-90 mb-4">{selectedProduct.description}</p>
 
+            {/* Кнопка связи без никнейма */}
             <button
               onClick={() => {
                 const message = encodeURIComponent(
@@ -201,9 +210,9 @@ const App = () => {
                 );
                 window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
-              className="mt-4 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
+              className="mt-3 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
             >
-              Связаться с @feliksdf
+              Связаться
             </button>
           </div>
         </div>
