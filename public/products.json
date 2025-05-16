@@ -42,7 +42,11 @@
       "description": "Идеальное сочетание цены и качества",
       "storage": "128 ГБ",
       "batteryHealth": "84%",
-      "condition": "Идеальное"
+      "condition": "Идеальное",
+      "extraImages": [
+        "/images/14pf2.jpg",
+        "/images/14pb.jpg"
+      ]
     },
     {
       "id": 3,
