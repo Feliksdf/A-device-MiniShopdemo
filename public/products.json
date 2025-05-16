@@ -92,6 +92,14 @@
       "extraImages": [
         "/images/mac1.jpg"
       ]
+    },
+    {
+      "id": 6,
+      "name": "Apods4 Premium",
+      "price": 1890,
+      "category": "Наушники",
+      "image": "/images/Apods.jpg",
+      "description": "Идеальное сочетание цены и качества",
     }
   ]
 }
