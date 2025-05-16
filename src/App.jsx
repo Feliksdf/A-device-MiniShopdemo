@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// Вставьте где-то сверху — например, под шапкой магазина
-{showLogo && (
-  <div 
-    className="fixed top-4 left-4 z-50 cursor-pointer"
-    onClick={() => setShowLogo(false)}
-  >
-    <img "/logo.gif" alt="Логотип A-Device" className="h-16 w-auto rounded-full" />
-  </div>
-)}
+
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [searchTerm, setSearchTerm] = useState('');
@@ -65,7 +57,7 @@ const App = () => {
       {showLogo && (
         <div className="fixed top-4 left-4 z-50 flex items-center space-x-2 cursor-pointer"
              onClick={() => setShowLogo(false)}>
-          <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto" />
+          <img "/logo.gif" alt="Логотип A-Device" className="h-12 w-auto" />
           <span className="text-cyan-500 font-bold">A-Device</span>
         </div>
       )}
