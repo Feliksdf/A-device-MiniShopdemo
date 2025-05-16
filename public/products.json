@@ -1,28 +1,29 @@
 {
   "banners": [
     {
+      "id": 1,
       "title": "Новинки уже здесь!",
       "text": "Скидки до 15% на iPhone 15 серии",
-      "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950"
-    },
-    {
-      "title": "Скидка на наушники премиум качества!",
-      "text": "Скидки до 15%",
-      "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950"
+      "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
+      "image": "https://placehold.co/600x200?text=New+iPhone+15+Pro ",
+      "linkToProduct": 1
     }
   ],
   "products": [
     {
       "id": 1,
-      "name": "iPhone 13 Pro max 256gb",
-      "price": 50990,
+      "name": "iPhone 15 Pro",
+      "price": 89990,
       "category": "Телефоны",
-      "image": "/images/13pmf1.jpg",
-      "description": "отличный айфон в стильном дизайне",
+      "image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
+      "description": "Новый iPhone с титановой рамкой и улучшенной камерой",
       "extraImages": [
-        "/images/13pmf2.jpg",
-        "/images/13pmb.jpg"
-      ]
+        "https://placehold.co/400x400?text= Камера+iPhone",
+        "https://placehold.co/400x400?text= Титановая рамка"
+      ],
+      "storage": "256 ГБ",
+      "batteryHealth": "95%",
+      "condition": "Идеальное"
     },
     {
       "id": 2,
@@ -31,21 +32,9 @@
       "category": "Ноутбуки",
       "image": "https://placehold.co/400x400?text=MacBook+Air+M3 ",
       "description": "Легкий и мощный ноутбук Apple на чипе M3",
-      "extraImages": [
-        "https://placehold.co/400x400?text= Макбук+сбоку",
-        "https://placehold.co/400x400?text= Работа+на+M3"
-      ]
-    },
-    {
-  "id": 4,
-  "name": "iPad Pro",
-  "price": 69990,
-  "category": "Планшеты",
-  "image": "https.id: //placehold.co/400x400?text=iPad+Pro",
-  "description": "Производительное устройство для работы и развлечений",
-  "extraImages": [
-    "https://placehold.co/400x400?text=iPad+Pro+ вид+спереди"
-  ]
-}
+      "storage": "1 ТБ SSD",
+      "batteryHealth": "100%",
+      "condition": "Новый"
+    }
   ]
 }
