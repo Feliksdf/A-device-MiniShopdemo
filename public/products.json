@@ -17,13 +17,13 @@
       "category": "Телефоны",
       "image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
       "description": "Новый iPhone с титановой рамкой и улучшенной камерой",
+      "storage": "256 ГБ",
+      "batteryHealth": "95%",
+      "condition": "Идеальное",
       "extraImages": [
         "https://placehold.co/400x400?text= Камера+iPhone",
         "https://placehold.co/400x400?text= Титановая рамка"
-      ],
-      "storage": "256 ГБ",
-      "batteryHealth": "95%",
-      "condition": "Идеальное"
+      ]
     },
     {
       "id": 2,
