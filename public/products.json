@@ -50,6 +50,21 @@
     },
     {
       "id": 3,
+      "name": "iPhone 14 Pro",
+      "price": 56890,
+      "category": "Телефоны",
+      "image": "/images/14pzf1.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "128 ГБ",
+      "batteryHealth": "88%",
+      "condition": "Идеальное",
+      "extraImages": [
+        "/images/14pzf2.jpg",
+        "/images/14pzb.jpg"
+      ]
+    },
+    {
+      "id": 3,
       "name": "iPhone 13 Pro Max",
       "price": 50990,
       "category": "Телефоны",
