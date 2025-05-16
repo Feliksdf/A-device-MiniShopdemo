@@ -81,7 +81,7 @@
     },
     {
       "id": 5,
-      "name": "MacBook air 13 m2",
+      "name": "MacBook Air 13 M2",
       "price": 64499,
       "category": "Ноутбуки",
       "image": "/images/mac.jpg",
@@ -92,6 +92,6 @@
       "extraImages": [
         "/images/mac1.jpg"
       ]
-    },
+    }
   ]
 }
