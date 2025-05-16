@@ -143,9 +143,9 @@
       "batteryHealth": "",
       "condition": "Новые",
       "extraImages": [
-        "/images/Apodsmax1.jpg"
-        "/images/Apodsmax2.jpg"
-        "/images/Apodsmax3.jpg"
+        "/images/Apodsmax1.jpg",
+        "/images/Apodsmax2.jpg",
+        "/images/Apodsmax3.jpg",
         "/images/Apodsmax4.jpg"
       ]
     }
