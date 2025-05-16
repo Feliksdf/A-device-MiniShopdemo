@@ -203,6 +203,60 @@
         "/images/usbcor1.jpg",
         "/images/usbcor2.jpg"
       ]
+    },
+    {
+      "id": 14,
+      "name": "Блок питания usb-c premium",
+      "price": 900,
+      "category": "Аксессуары",
+      "image": "/images/usbc.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/usbc1.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Кабель Usb-c lighthing orig",
+      "price": 1500,
+      "category": "Аксессуары",
+      "image": "/images/light.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/light1.jpg"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Кабель Usb-c Type-c premium",
+      "price": 600,
+      "category": "Аксессуары",
+      "image": "/images/cabusbc.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/cabusbc1.jpg"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "BatteryPack MagSafe Premium",
+      "price": 1100,
+      "category": "Аксессуары",
+      "image": "/images/bat.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
     }
   ]
 }
