@@ -1,30 +1,35 @@
-[
-  {
-    "id": 1,
-    "name": "iPhone 14 Pro max 128gb",
-    "price": 51990,
-    "category": "Телефоны",
-    "image": "https://placehold.co/400x400?text=iPhone+15+Pro "
-  },
-  {
-    "id": 2,
-    "name": "MacBook Air M3",
-    "price": 119990,
-    "category": "Ноутбуки",
-    "image": "https://placehold.co/400x400?text=MacBook+Air+M3 "
-  },
-  {
-    "id": 3,
-    "name": "iPad Pro",
-    "price": 69990,
-    "category": "Планшеты",
-    "image": "https://placehold.co/400x400?text=iPad+Pro "
-  },
-  {
-    "id": 4,
-    "name": "Apple Watch Ultra",
-    "price": 49990,
-    "category": "Часы",
-    "image": "https://placehold.co/400x400?text=Watch+Ultra "
-  }
-]
+{
+  "banners": [
+    {
+      "title": "Новинки уже здесь!",
+      "text": "Скидки до 15% на iPhone 15 серии",
+      "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 15 Pro",
+      "price": 89990,
+      "category": "Телефоны",
+      "image": "https://placehold.co/400x400?text=iPhone+15+Pro ",
+      "description": "Новый iPhone с титановой рамкой",
+      "extraImages": [
+        "https://placehold.co/400x400?text= Камера+iPhone",
+        "https://placehold.co/400x400?text= Титановая рамка"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MacBook Air M3",
+      "price": 119990,
+      "category": "Ноутбуки",
+      "image": "https://placehold.co/400x400?text=MacBook+Air+M3 ",
+      "description": "Легкий и мощный ноутбук Apple на чипе M3",
+      "extraImages": [
+        "https://placehold.co/400x400?text= Макбук+сбоку",
+        "https://placehold.co/400x400?text= Работа+на+M3"
+      ]
+    }
+  ]
+}
