@@ -116,7 +116,7 @@ const App = () => {
         <div className="flex-1">
           {/* Категории */}
           <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-            {['Все', 'Iphone', 'Iphone new', 'Аксессуары', 'Ноутбуки', 'Наушники', 'Игровые приставки', 'Часы', 'Красота'].map((category, index) => (
+            {['Все', 'iPhone', 'Iphone new', 'Аксессуары', 'Ноутбуки', 'Наушники', 'Игровые приставки', 'Часы', 'Красота'].map((category, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedCategory(category)}
