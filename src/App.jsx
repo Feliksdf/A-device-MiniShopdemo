@@ -78,7 +78,7 @@ const closeProductDetails = () => {
   setTimeout(() => {
     setIsModalOpen(false);
     setSelectedProduct(null);
-  }, 300); // Длительность анимации
+  }, 400); // Длительность анимации
 };
 
   // При клике на товар → открываем карточку
