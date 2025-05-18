@@ -149,7 +149,7 @@ const App = () => {
 
                   <div className="p-4">
                     <h2 className="font-semibold text-lg">{product.name}</h2>
-                    <p className="text-sm opacity-70 mt-1">от {product.price?.toLocaleString()} ₽</p>
+                    <p className="text-sm opacity-70 mt-1"> {product.price?.toLocaleString()} ₽</p>
                   </div>
                 </div>
               ))
