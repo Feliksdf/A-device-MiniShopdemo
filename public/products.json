@@ -11,7 +11,7 @@
     {
   "id": 2,
   "title": "Сервисный центр A-Device",
-  "text": "Быстрый и качественный ремонт",
+  "text": "Быстрый и качественный ремонт, напишите нам кликнув на баннер",
   "bg": "bg-gradient-to-r from-teal-900 via-black to-teal-950",
   "image": "/images/remont.jpg",
   "linkToProduct": "https://t.me/feliks_df ",
