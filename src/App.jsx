@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+// В начале App.jsx
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [modalAnimation, setModalAnimation] = useState("opacity-0 scale-95");
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [searchTerm, setSearchTerm] = useState('');
