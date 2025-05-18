@@ -335,7 +335,7 @@
       "extraImages": []
     },
     {
-      "id": 21,
+      "id": 24,
       "name": "Стекла на iPhone",
       "price": 299,
       "category": "Аксессуары",
@@ -347,7 +347,7 @@
       "extraImages": []
     },
     {
-      "id": 22,
+      "id": 25,
       "name": "iphone 16 pro max",
       "price": 107990,
       "category": "New iPhone",
@@ -359,7 +359,7 @@
       "extraImages": []
     },
     {
-      "id": 23,
+      "id": 26,
       "name": "iphone 16 pro max",
       "price": 123990,
       "category": "New iPhone",
@@ -371,7 +371,7 @@
       "extraImages": []
     },
     {
-      "id": 24,
+      "id": 27,
       "name": "iphone 16 pro max",
       "price": 149990,
       "category": "New iPhone",
@@ -383,7 +383,7 @@
       "extraImages": []
     },
     {
-      "id": 25,
+      "id": 28,
       "name": "iphone 16 pro",
       "price": 92990,
       "category": "New iPhone",
@@ -395,7 +395,7 @@
       "extraImages": []
     },
     {
-      "id": 26,
+      "id": 29,
       "name": "iphone 16 pro",
       "price": 99990,
       "category": "New iPhone",
@@ -407,7 +407,7 @@
       "extraImages": []
     },
     {
-      "id": 27,
+      "id": 30,
       "name": "iphone 16 pro",
       "price": 122490,
       "category": "New iPhone",
@@ -419,7 +419,7 @@
       "extraImages": []
     },
     {
-      "id": 28,
+      "id": 31,
       "name": "iphone 16 pro",
       "price": 135990,
       "category": "New iPhone",
@@ -431,7 +431,7 @@
       "extraImages": []
     },
     {
-      "id": 29,
+      "id": 32,
       "name": "iphone 16",
       "price": 71990,
       "category": "New iPhone",
@@ -443,7 +443,7 @@
       "extraImages": []
     },
     {
-      "id": 30,
+      "id": 33,
       "name": "iphone 16",
       "price": 81490,
       "category": "New iPhone",
@@ -455,7 +455,7 @@
       "extraImages": []
     },
     {
-      "id": 31,
+      "id": 34,
       "name": "iphone 16e",
       "price": 58490,
       "category": "New iPhone",
@@ -467,7 +467,7 @@
       "extraImages": []
     },
     {
-      "id": 32,
+      "id": 35,
       "name": "iphone 16e",
       "price": 68490,
       "category": "New iPhone",
@@ -479,7 +479,7 @@
       "extraImages": []
     },
     {
-      "id": 33,
+      "id": 36,
       "name": "Playstation 5 DVD slim",
       "price": 55990,
       "category": "Игровые приставки",
@@ -491,7 +491,7 @@
       "extraImages": []
     },
     {
-      "id": 34,
+      "id": 37,
       "name": "Playstation 5 Digital slim",
       "price": 51490,
       "category": "Игровые приставки",
