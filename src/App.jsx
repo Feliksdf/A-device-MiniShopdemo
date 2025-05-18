@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const App = () => {
+  const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalAnimation, setModalAnimation] = useState("opacity-0 scale-95");
   const [theme, setTheme] = useState('dark');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все');
