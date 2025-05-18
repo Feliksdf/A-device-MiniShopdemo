@@ -83,7 +83,7 @@ const App = () => {
     setTimeout(() => {
       setIsModalOpen(false);
       setSelectedProduct(null);
-    }, 300); // Совпадает с длительностью анимации
+    }, 200); // Совпадает с длительностью анимации
   };
 
   return (
