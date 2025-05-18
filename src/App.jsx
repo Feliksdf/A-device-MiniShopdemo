@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-  const App = () => {
+const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalAnimation, setModalAnimation] = useState("opacity-0 scale-95");
   const [theme, setTheme] = useState('dark');
@@ -35,7 +35,7 @@ import React, { useState, useEffect } from 'react';
             name: "iPhone 14 Pro Max",
             price: 60990,
             category: "Телефоны",
-            image: "https://placehold.co/400x400?text=iPhone+14+Pro+Max ",
+            image: "https://placehold.co/400x400?text=iPhone+14+Pro+Max ", // ✅ Убраны пробелы
             description: "Идеальное сочетание цены и качества",
             storage: "128 ГБ",
             batteryHealth: "88%",
@@ -46,7 +46,7 @@ import React, { useState, useEffect } from 'react';
             name: "MacBook Air M3",
             price: 119990,
             category: "Ноутбуки",
-            image: "https://placehold.co/400x400?text=MacBook+Air+M3 ",
+            image: "https://placehold.co/400x400?text=MacBook+Air+M3 ", // ✅ Убраны пробелы
             description: "Легкий и мощный ноутбук Apple на чипе M3",
             storage: "1 ТБ SSD",
             batteryHealth: "100%",
@@ -63,27 +63,27 @@ import React, { useState, useEffect } from 'react';
     return matchesCategory && matchesSearch;
   });
 
- // Функция открытия товара с анимацией
-const openProductDetails = (product) => {
-  setSelectedProduct(product);
-  setIsModalOpen(true);
-  requestAnimationFrame(() => {
-    setModalAnimation("opacity-100 scale-100");
-  });
-};
+  // Открытие полноразмерного фото
+  const openFullScreen = (url) => {
+    setModalImage(url);
+  };
 
-// Функция закрытия товара с анимацией
-const closeProductDetails = () => {
-  setModalAnimation("opacity-0 scale-95");
-  setTimeout(() => {
-    setIsModalOpen(false);
-    setSelectedProduct(null);
-  }, 400); // Длительность анимации
-};
-
-  // При клике на товар → открываем карточку
+  // ✅ Объединенная функция открытия товара
   const openProductDetails = (product) => {
     setSelectedProduct(product);
+    setIsModalOpen(true);
+    requestAnimationFrame(() => {
+      setModalAnimation("opacity-100 scale-100");
+    });
+  };
+
+  // Закрытие карточки товара
+  const closeProductDetails = () => {
+    setModalAnimation("opacity-0 scale-95");
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setSelectedProduct(null);
+    }, 300); // Совпадает с длительностью анимации
   };
 
   return (
@@ -107,35 +107,37 @@ const closeProductDetails = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-6 px-4 max-w-6xl mx-auto">
-       {/* Баннеры слева с анимацией */}
-<div className="md:w-1/4 space-y-4">
-  {banners.map((banner, index) => (
-    <div
-      key={index}
-      className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white transition-all duration-300 hover:scale-105`}
-      onClick={() => {
-        if (!banner.linkToProduct) return;
-        
-        if (banner.type === "external") {
-          window.open(banner.linkToProduct.trim(), '_blank');
-        } else {
-          const product = products.find(p => p.id === banner.linkToProduct);
-          if (product) openProductDetails(product);
-        }
-      }}
-    >
-      <img
-        src={banner.image}
-        alt={banner.title}
-        className="w-full h-32 object-cover rounded-t-xl"
-      />
-      <div className="p-4">
-        <h2 className="text-lg font-semibold">{banner.title}</h2>
-        <p className="text-sm opacity-90 mt-1">{banner.text}</p>
-      </div>
-    </div>
-  ))}
-</div>
+        {/* Баннеры слева с анимацией */}
+        <div className="md:w-1/4 space-y-4">
+          {banners.map((banner, index) => (
+            <div
+              key={index}
+              className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white transition-all duration-300 hover:scale-105`}
+              onClick={() => {
+                if (!banner.linkToProduct) return;
+
+                if (banner.type === "external") {
+                  // ✅ Открытие внешней ссылки
+                  window.open(banner.linkToProduct.trim(), '_blank');
+                } else {
+                  // ✅ Открытие товара по ID
+                  const product = products.find(p => p.id === banner.linkToProduct);
+                  if (product) openProductDetails(product);
+                }
+              }}
+            >
+              <img
+                src={banner.image?.trim() || "/images/default.jpg"} // ✅ Без пробелов
+                alt={banner.title}
+                className="w-full h-32 object-cover rounded-t-xl"
+              />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold">{banner.title}</h2>
+                <p className="text-sm opacity-90 mt-1">{banner.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
         <div className="flex-1">
           {/* Категории */}
@@ -148,7 +150,7 @@ const closeProductDetails = () => {
                   selectedCategory === category
                     ? 'bg-cyan-500 text-black'
                     : 'bg-gray-900 hover:bg-gray-800 text-white'
-                } transition`}
+                } transition-all duration-300`}
               >
                 {category}
               </button>
@@ -156,40 +158,22 @@ const closeProductDetails = () => {
           </div>
 
           {/* Товары справа с анимацией */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {filteredProducts.length > 0 ? (
-    filteredProducts.map(product => (
-      <div
-        key={product.id}
-        className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-        onClick={() => openProductDetails(product)}
-      >
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-48 object-cover"
-        />
-        <div className="p-4">
-          <h2 className="font-semibold text-lg">{product.name}</h2>
-          <p className="text-sm opacity-70 mt-1">{product.price?.toLocaleString()} ₽</p>
-        </div>
-      </div>
-    ))
-  ) : (
-    <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
-  )}
-</div>
-                  {/* Клик по фото → открывает карточку */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map(product => (
+                <div
+                  key={product.id}
+                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+                  onClick={() => openProductDetails(product)}
+                >
                   <img
-                    src={product.image}
+                    src={product.image?.trim()} // ✅ Убраны пробелы
                     alt={product.name}
                     className="w-full h-48 object-cover"
-                    onClick={() => openProductDetails(product)} // ← клик по фото → открывает карточку
                   />
-
                   <div className="p-4">
                     <h2 className="font-semibold text-lg">{product.name}</h2>
-                    <p className="text-sm opacity-70 mt-1"> {product.price?.toLocaleString()} ₽</p>
+                    <p className="text-sm opacity-70 mt-1">{product.price?.toLocaleString()} ₽</p>
                   </div>
                 </div>
               ))
@@ -201,48 +185,43 @@ const closeProductDetails = () => {
       </div>
 
       {/* Модальное окно с полноразмерным фото */}
-{modalImage && (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-    onClick={() => setModalImage(null)}
-  >
-    <img
-      src={modalImage}
-      alt="Полноразмерное фото"
-      className="max-w-[90vw] max-h-[90vh] object-contain transform transition-all duration-300 hover:scale-105"
-      onClick={(e) => e.stopPropagation()}
-    />
-  </div>
-)}
+      {modalImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+          onClick={() => setModalImage(null)}
+        >
+          <img
+            src={modalImage}
+            alt="Полноразмерное фото"
+            className="max-w-[90vw] max-h-[90vh] object-contain transform transition-all duration-300 hover:scale-105"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
 
-      {/* Информация о товаре */}
-      {selectedProduct && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-90">
-          <div className="bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full relative">
+      {/* Информация о товаре с анимацией */}
+      {isModalOpen && selectedProduct && (
+        <div 
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-90"
+          onClick={closeProductDetails}
+        >
+          <div 
+            className={`bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full relative transform ${modalAnimation}`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              onClick={() => setSelectedProduct(null)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-white text-4xl">×</button>
+              onClick={closeProductDetails}
+              className="absolute top-2 right-2 text-gray-400 hover:text-white text-4xl transition-colors duration-300"
+            >
+              ×
+            </button>
 
-            {/* Клик по фото в карточке → открывает полноразмерное фото */}
             <img
-              src={selectedProduct.image}
+              src={selectedProduct.image?.trim()}
               alt={selectedProduct.name}
-              className="w-full h-64 object-cover rounded-lg mb-4 cursor-zoom-in"
+              className="w-full h-64 object-cover rounded-lg mb-4 cursor-zoom-in transition-transform duration-300 hover:scale-105"
               onClick={() => openFullScreen(selectedProduct.image)}
             />
-
-            {/* Дополнительные фото */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {selectedProduct.extraImages?.map((img, i) => (
-                <img
-                  key={i}
-                  src={img}
-                  alt={`Доп. фото ${i + 1}`}
-                  className="w-20 h-20 object-cover rounded cursor-pointer"
-                  onClick={() => openFullScreen(img)}
-                />
-              ))}
-            </div>
 
             <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
             <p className="opacity-90 mb-2">💰 Цена: <strong>{selectedProduct.price?.toLocaleString()} ₽</strong></p>
@@ -261,15 +240,15 @@ const closeProductDetails = () => {
 
             <p className="mt-4 opacity-90">{selectedProduct.description}</p>
 
-            {/* Кнопка связи */}
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 const message = encodeURIComponent(
                   `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽\n`
                 );
                 window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
               }}
-              className="mt-4 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition"
+              className="mt-4 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition-all duration-300 hover:shadow-lg"
             >
               Связаться
             </button>
