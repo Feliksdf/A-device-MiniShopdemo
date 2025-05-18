@@ -63,10 +63,23 @@ import React, { useState, useEffect } from 'react';
     return matchesCategory && matchesSearch;
   });
 
-  // Открытие полноразмерного фото
-  const openFullScreen = (url) => {
-    setModalImage(url);
-  };
+ // Функция открытия товара с анимацией
+const openProductDetails = (product) => {
+  setSelectedProduct(product);
+  setIsModalOpen(true);
+  requestAnimationFrame(() => {
+    setModalAnimation("opacity-100 scale-100");
+  });
+};
+
+// Функция закрытия товара с анимацией
+const closeProductDetails = () => {
+  setModalAnimation("opacity-0 scale-95");
+  setTimeout(() => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  }, 300); // Длительность анимации
+};
 
   // При клике на товар → открываем карточку
   const openProductDetails = (product) => {
