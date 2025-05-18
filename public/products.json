@@ -9,13 +9,14 @@
       "linkToProduct": 6
     },
     {
-      "id": 2,
-      "title": "Сервисный центр A-Device",
-      "text": "Быстрый и качественный ремонт",
-      "bg": "bg-gradient-to-r from-teal-900 via-black to-teal-950",
-      "image": "/images/remont.jpg",
-      "linkToProduct": "https://t.me/feliks_df"
-    }
+  "id": 2,
+  "title": "Сервисный центр A-Device",
+  "text": "Быстрый и качественный ремонт",
+  "bg": "bg-gradient-to-r from-teal-900 via-black to-teal-950",
+  "image": "/images/remont.jpg",
+  "linkToProduct": "https://t.me/feliks_df ",
+  "type": "external"
+}
   ],
   "products": [
     {
