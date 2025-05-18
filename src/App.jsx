@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// В начале App.jsx
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [modalAnimation, setModalAnimation] = useState("opacity-0 scale-95");
+
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [searchTerm, setSearchTerm] = useState('');
@@ -96,35 +94,23 @@ const App = () => {
       <div className="flex flex-col md:flex-row gap-6 px-4 max-w-6xl mx-auto">
         {/* Баннеры слева */}
         <div className="md:w-1/4 space-y-4">
-         {banners.map((banner, index) => (
-  <div
-    key={index}
-    className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
-    onClick={() => {
-      if (!banner.linkToProduct) return;
-      
-      if (banner.type === "external") {
-        // Открыть внешнюю ссылку
-        window.open(banner.linkToProduct.trim(), '_blank');
-      } else {
-        // Открыть товар по ID
-        const product = products.find(p => p.id === banner.linkToProduct);
-        if (product) setSelectedProduct(product);
-      }
-    }}
-    style={{ cursor: banner.linkToProduct ? 'pointer' : 'default' }}
-  >
-    <img
-      src={banner.image}
-      alt={banner.title}
-      className="w-full h-32 object-cover rounded-t-xl"
-    />
-    <div className="p-4">
-      <h2 className="text-lg font-semibold">{banner.title}</h2>
-      <p className="text-sm opacity-90 mt-1">{banner.text}</p>
-    </div>
-  </div>
-))}
+          {banners.map((banner, index) => (
+            <div
+              key={index}
+              onClick={() => setSelectedProduct(products.find(p => p.id === banner.linkToProduct))}
+              className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white`}
+            >
+              <img
+                src={banner.image}
+                alt={banner.title}
+                className="w-full h-32 object-cover rounded-t-xl"
+              />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold">{banner.title}</h2>
+                <p className="text-sm opacity-90 mt-1">{banner.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="flex-1">
