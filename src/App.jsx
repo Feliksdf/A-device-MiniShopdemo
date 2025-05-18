@@ -201,19 +201,19 @@ const closeProductDetails = () => {
       </div>
 
       {/* Модальное окно с полноразмерным фото */}
-      {modalImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-          onClick={() => setModalImage(null)}
-        >
-          <img
-            src={modalImage}
-            alt="Полноразмерное фото"
-            className="max-w-[90vw] max-h-[90vh] object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
+{modalImage && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+    onClick={() => setModalImage(null)}
+  >
+    <img
+      src={modalImage}
+      alt="Полноразмерное фото"
+      className="max-w-[90vw] max-h-[90vh] object-contain transform transition-all duration-300 hover:scale-105"
+      onClick={(e) => e.stopPropagation()}
+    />
+  </div>
+)}
 
       {/* Информация о товаре */}
       {selectedProduct && (
