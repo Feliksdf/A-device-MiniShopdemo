@@ -146,14 +146,30 @@ const closeProductDetails = () => {
             ))}
           </div>
 
-          {/* Товары справа */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map(product => (
-                <div
-                  key={product.id}
-                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 cursor-pointer"
-                >
+          {/* Товары справа с анимацией */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {filteredProducts.length > 0 ? (
+    filteredProducts.map(product => (
+      <div
+        key={product.id}
+        className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+        onClick={() => openProductDetails(product)}
+      >
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-48 object-cover"
+        />
+        <div className="p-4">
+          <h2 className="font-semibold text-lg">{product.name}</h2>
+          <p className="text-sm opacity-70 mt-1">{product.price?.toLocaleString()} ₽</p>
+        </div>
+      </div>
+    ))
+  ) : (
+    <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
+  )}
+</div>
                   {/* Клик по фото → открывает карточку */}
                   <img
                     src={product.image}
