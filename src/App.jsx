@@ -62,7 +62,6 @@ const App = () => {
   // Открытие полноразмерного фото
   const openFullScreen = (url) => {
     setModalImage(url);
-    setIsGalleryOpen(false); // ✅ Закрываем галерею
   };
 
   // Открытие галереи
@@ -188,7 +187,7 @@ const App = () => {
           <img
             src={modalImage}
             alt="Полноразмерное фото"
-            className="max-w-[90vw] max-h-[90vh] object-contain transform transition-all duration-300 hover:scale-105"
+            className="max-w-[90vw] max-h-[90vh] object-contain"
             onClick={(e) => e.stopPropagation()}
           />
         </div>
@@ -201,7 +200,7 @@ const App = () => {
           onClick={closeGallery}
         >
           <div 
-            className={`bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full max-h-[90vh] overflow-y-auto relative transform ${modalAnimation}`}
+            className={`bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full relative transform ${modalAnimation}`}
             onClick={(e) => e.stopPropagation()}
           >
             <button
