@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react'; // ✅ Импорт Swiper
-import 'swiper/css'; // ✅ Базовые стили
-import 'swiper/css/navigation'; // ✅ Стрелки навигации
-import 'swiper/css/pagination'; // ✅ Точки пагинации
+import { Swiper, SwiperSlide } from 'swiper/react'; // ✅ Убедитесь, что установлен
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,11 +39,14 @@ const App = () => {
             price: 60990,
             category: "Телефоны",
             image: "/images/14pmf1.jpg",
-            extraImages: ["/images/14pmf2.jpg", "/images/14pmb.jpg"],
             description: "Идеальное сочетание цены и качества",
             storage: "128 ГБ",
             batteryHealth: "88%",
-            condition: "Идеальное"
+            condition: "Идеальное",
+            extraImages: [
+              "/images/14pmf2.jpg",
+              "/images/14pmb.jpg"
+            ]
           }
         ]);
       });
@@ -76,98 +79,31 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Шапка магазина */}
-      <div className="text-center mb-6 pt-6 flex flex-col items-center justify-center">
-        <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto rounded-full mb-2 animate-pulse" />
-        <h1 className="text-3xl font-bold">A-Device</h1>
-        <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
-      </div>
+      {/* ...остальной код шапки, поиска и товаров... */}
 
-      {/* Поиск */}
-      <div className="mb-6 px-4 max-w-3xl mx-auto w-full">
-        <input
-          type="text"
-          placeholder="Поиск товаров..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-2 rounded-lg shadow-sm bg-gray-900 border-gray-700 border focus:outline-none focus:ring-2 focus:ring-cyan-500"
-        />
-      </div>
-
-      {/* Категории и товары */}
-      <div className="flex flex-col md:flex-row gap-6 px-4 max-w-6xl mx-auto">
-        {/* Баннеры */}
-        <div className="md:w-1/4 space-y-4">
-          {banners.map((banner, index) => (
+      {/* Товары */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map(product => (
             <div
-              key={index}
-              className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white transition-all duration-300 hover:scale-105`}
-              onClick={() => {
-                if (!banner.linkToProduct) return;
-                if (banner.type === "external") {
-                  window.open(banner.linkToProduct.trim(), '_blank');
-                } else {
-                  const product = products.find(p => p.id === banner.linkToProduct);
-                  if (product) openProductDetails(product);
-                }
-              }}
+              key={product.id}
+              className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+              onClick={() => openProductDetails(product)}
             >
               <img
-                src={banner.image?.trim() || "/images/default.jpg"}
-                alt={banner.title}
-                className="w-full h-32 object-cover rounded-t-xl"
+                src={product.image?.trim()}
+                alt={product.name}
+                className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h2 className="text-lg font-semibold">{banner.title}</h2>
-                <p className="text-sm opacity-90 mt-1">{banner.text}</p>
+                <h2 className="font-semibold text-lg">{product.name}</h2>
+                <p className="text-sm opacity-70 mt-1">{product.price?.toLocaleString()} ₽</p>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Товары */}
-        <div className="flex-1">
-          <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
-            {['Все', 'iPhone', 'New iPhone', 'Аксессуары', 'Macbook', 'Наушники', 'Игровые приставки', 'Часы', 'Красота'].map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full whitespace-nowrap ${
-                  selectedCategory === category
-                    ? 'bg-cyan-500 text-black'
-                    : 'bg-gray-900 hover:bg-gray-800 text-white'
-                } transition-all duration-300`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Сетка товаров */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map(product => (
-                <div
-                  key={product.id}
-                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-                  onClick={() => openProductDetails(product)}
-                >
-                  <img
-                    src={product.image?.trim()}
-                    alt={product.name}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <h2 className="font-semibold text-lg">{product.name}</h2>
-                    <p className="text-sm opacity-70 mt-1">{product.price?.toLocaleString()} ₽</p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
-            )}
-          </div>
-        </div>
+          ))
+        ) : (
+          <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
+        )}
       </div>
 
       {/* Модальное окно с галереей и слайдером */}
