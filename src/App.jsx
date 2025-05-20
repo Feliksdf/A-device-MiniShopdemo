@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react'; // ✅ Убедитесь, что установлен
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react'; // ✅ Импорт Swiper
+import 'swiper/css'; // ✅ Базовые стили
+import 'swiper/css/pagination'; // ✅ Пагинация
 
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false); // ✅ Отдельный стейт для галереи
+  const [modalImage, setModalImage] = useState(null); // ✅ Для полноразмерного фото
   const [modalAnimation, setModalAnimation] = useState("opacity-0 scale-95");
   const [theme, setTheme] = useState('dark');
   const [searchTerm, setSearchTerm] = useState('');
@@ -59,65 +59,153 @@ const App = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Объединенная функция открытия товара
-  const openProductDetails = (product) => {
+  // Открытие полноразмерного фото
+  const openFullScreen = (url) => {
+    setModalImage(url);
+    setIsGalleryOpen(false); // ✅ Закрываем галерею
+  };
+
+  // Открытие галереи
+  const openGallery = (product) => {
     setSelectedProduct(product);
-    setIsModalOpen(true);
+    setIsGalleryOpen(true);
     requestAnimationFrame(() => {
       setModalAnimation("opacity-100 scale-100");
     });
   };
 
-  // Закрытие карточки товара
-  const closeProductDetails = () => {
+  // Закрытие галереи
+  const closeGallery = () => {
     setModalAnimation("opacity-0 scale-95");
     setTimeout(() => {
-      setIsModalOpen(false);
+      setIsGalleryOpen(false);
       setSelectedProduct(null);
     }, 200);
   };
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* ...остальной код шапки, поиска и товаров... */}
-
-      {/* Товары */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map(product => (
-            <div
-              key={product.id}
-              className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
-              onClick={() => openProductDetails(product)}
-            >
-              <img
-                src={product.image?.trim()}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="font-semibold text-lg">{product.name}</h2>
-                <p className="text-sm opacity-70 mt-1">{product.price?.toLocaleString()} ₽</p>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
-        )}
+      {/* Шапка магазина */}
+      <div className="text-center mb-6 pt-6 flex flex-col items-center justify-center">
+        <img src="/logo.gif" alt="Логотип A-Device" className="h-12 w-auto rounded-full mb-2 animate-pulse" />
+        <h1 className="text-3xl font-bold">A-Device</h1>
+        <p className="opacity-70 mt-1">Оригинальная техника Apple и аксессуары</p>
       </div>
 
-      {/* Модальное окно с галереей и слайдером */}
-      {isModalOpen && selectedProduct && (
+      {/* Поиск */}
+      <div className="mb-6 px-4 max-w-3xl mx-auto w-full">
+        <input
+          type="text"
+          placeholder="Поиск товаров..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full px-4 py-2 rounded-lg shadow-sm bg-gray-900 border-gray-700 border focus:outline-none focus:ring-2 focus:ring-cyan-500"
+        />
+      </div>
+
+      <div className="flex flex-col md:flex-row gap-6 px-4 max-w-6xl mx-auto">
+        {/* Баннеры слева */}
+        <div className="md:w-1/4 space-y-4">
+          {banners.map((banner, index) => (
+            <div
+              key={index}
+              className={`cursor-pointer ${banner.bg} rounded-xl shadow-md p-4 text-white transition-all duration-300 hover:scale-105`}
+              onClick={() => {
+                if (!banner.linkToProduct) return;
+                if (banner.type === "external") {
+                  window.open(banner.linkToProduct.trim(), '_blank');
+                } else {
+                  const product = products.find(p => p.id === banner.linkToProduct);
+                  if (product) openGallery(product);
+                }
+              }}
+            >
+              <img
+                src={banner.image?.trim() || "/images/default.jpg"}
+                alt={banner.title}
+                className="w-full h-32 object-cover rounded-t-xl"
+              />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold">{banner.title}</h2>
+                <p className="text-sm opacity-90 mt-1">{banner.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Товары справа */}
+        <div className="flex-1">
+          {/* Категории */}
+          <div className="flex overflow-x-auto space-x-2 pb-2 mb-6 no-scrollbar px-4">
+            {['Все', 'iPhone', 'New iPhone', 'Аксессуары', 'Macbook', 'Наушники', 'Игровые приставки', 'Часы', 'Красота'].map((category, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full whitespace-nowrap ${
+                  selectedCategory === category
+                    ? 'bg-cyan-500 text-black'
+                    : 'bg-gray-900 hover:bg-gray-800 text-white'
+                } transition-all duration-300`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Сетка товаров */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map(product => (
+                <div
+                  key={product.id}
+                  className="bg-gray-900 rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
+                  onClick={() => openGallery(product)}
+                >
+                  <img
+                    src={product.image?.trim()}
+                    alt={product.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="font-semibold text-lg">{product.name}</h2>
+                    <p className="text-sm opacity-70 mt-1">{product.price?.toLocaleString()} ₽</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="col-span-full text-center py-8 opacity-70">🔍 Товары не найдены</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Модальное окно с полноразмерным фото */}
+      {modalImage && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-          onClick={closeProductDetails}
+          onClick={() => setModalImage(null)}
+        >
+          <img
+            src={modalImage}
+            alt="Полноразмерное фото"
+            className="max-w-[90vw] max-h-[90vh] object-contain transform transition-all duration-300 hover:scale-105"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      {/* Модальное окно с галереей и слайдером */}
+      {isGalleryOpen && selectedProduct && (
+        <div 
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-90"
+          onClick={closeGallery}
         >
           <div 
             className={`bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full max-h-[90vh] overflow-y-auto relative transform ${modalAnimation}`}
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              onClick={closeProductDetails}
+              onClick={closeGallery}
               className="absolute top-2 right-2 text-gray-400 hover:text-white text-4xl transition-colors duration-300 z-50"
             >
               ×
@@ -128,20 +216,18 @@ const App = () => {
               spaceBetween={10}
               slidesPerView={1}
               loop={true}
-              navigation
               pagination={{ clickable: true }}
               className="h-64 mb-4 rounded-lg overflow-hidden"
             >
               {/* Основное фото */}
-              {selectedProduct.image && (
-                <SwiperSlide>
-                  <img
-                    src={selectedProduct.image?.trim()}
-                    alt={selectedProduct.name}
-                    className="w-full h-64 object-cover"
-                  />
-                </SwiperSlide>
-              )}
+              <SwiperSlide>
+                <img
+                  src={selectedProduct.image?.trim()}
+                  alt={selectedProduct.name}
+                  className="w-full h-64 object-cover cursor-zoom-in"
+                  onClick={() => openFullScreen(selectedProduct.image)}
+                />
+              </SwiperSlide>
 
               {/* Дополнительные фото */}
               {selectedProduct.extraImages && selectedProduct.extraImages.map((imgUrl, idx) => (
@@ -149,7 +235,8 @@ const App = () => {
                   <img
                     src={imgUrl.trim()}
                     alt={`Доп фото ${idx + 1}`}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-64 object-cover cursor-zoom-in"
+                    onClick={() => openFullScreen(imgUrl)}
                   />
                 </SwiperSlide>
               ))}
