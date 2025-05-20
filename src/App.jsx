@@ -255,6 +255,88 @@ const App = () => {
           </div>
         </div>
       )}
+      {/* Модальное окно с галереей и слайдером */}
+{isModalOpen && selectedProduct && (
+  <div 
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+    onClick={closeProductDetails}
+  >
+    <div 
+      className={`bg-gray-900 rounded-xl shadow-lg p-6 max-w-md w-full max-h-[90vh] overflow-y-auto relative transform ${modalAnimation}`}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        onClick={closeProductDetails}
+        className="absolute top-2 right-2 text-gray-400 hover:text-white text-4xl z-50"
+      >
+        ×
+      </button>
+
+      {/* Слайдер с изображениями */}
+      <Swiper
+        spaceBetween={10}
+        slidesPerView={1}
+        loop={true}
+        navigation
+        pagination={{ clickable: true }}
+        className="h-64 mb-4 rounded-lg overflow-hidden"
+      >
+        {/* Основное фото */}
+        <SwiperSlide>
+          <img
+            src={selectedProduct.image?.trim()}
+            alt={selectedProduct.name}
+            className="w-full h-64 object-cover"
+          />
+        </SwiperSlide>
+
+        {/* Дополнительные фото */}
+        {selectedProduct.extraImages && selectedProduct.extraImages.length > 0 && (
+          selectedProduct.extraImages.map((imgUrl, idx) => (
+            <SwiperSlide key={idx}>
+              <img
+                src={imgUrl.trim()}
+                alt={`Доп фото ${idx + 1}`}
+                className="w-full h-64 object-cover"
+              />
+            </SwiperSlide>
+          ))
+        )}
+      </Swiper>
+
+      {/* Описание товара */}
+      <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
+      <p className="opacity-90 mb-2">💰 Цена: <strong>{selectedProduct.price?.toLocaleString()} ₽</strong></p>
+
+      {selectedProduct.storage && (
+        <p className="opacity-90 mb-2">📦 Память: <strong>{selectedProduct.storage}</strong></p>
+      )}
+
+      {selectedProduct.batteryHealth && (
+        <p className="opacity-90 mb-2">🔋 Батарея: <strong>{selectedProduct.batteryHealth}</strong></p>
+      )}
+
+      {selectedProduct.condition && (
+        <p className="opacity-90 mb-4">💎 Состояние: <strong>{selectedProduct.condition}</strong></p>
+      )}
+
+      <p className="mt-4 opacity-90">{selectedProduct.description}</p>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          const message = encodeURIComponent(
+            `Здравствуйте! Хочу купить: ${selectedProduct.name} за ${selectedProduct.price}₽`
+          );
+          window.open(`https://t.me/feliks_df?text= ${message}`, '_blank');
+        }}
+        className="mt-4 w-full py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold rounded-md transition-all duration-300 hover:shadow-lg"
+      >
+        Связаться
+      </button>
+    </div>
+  </div>
+)}
     </div>
   );
 };
