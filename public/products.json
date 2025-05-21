@@ -537,7 +537,10 @@
       "storage": "128",
       "batteryHealth": "",
       "condition": "Новые",
-      "extraImages": []
+      "extraImages": [
+        "/images/iphone14n1",
+        "/images/iphone14n2"
+      ]
     }
   ]
 }
