@@ -3,8 +3,9 @@
         {
       "id": 1,
       "title": "iPhone под ваш вкус и бюджет — с подбором от A-Device!",
-      "text": "Подберем лучший iPhone под ваш бюджет, чтобы узнать подробнее просто кликните на баннер",
+      "text": "Подберем лучший iPhone под ваш бюджет, чтобы узнать подробнее просто кликните на баннер и напишите менеджеру",
       "bg": "bg-gradient-to-r from-cyan-900 via-blue-950 to-cyan-950",
+      "image":"/images/podbor.jpg",
       "linkToProduct": "https://t.me/feliks_df",
       "type": "external"
     },
