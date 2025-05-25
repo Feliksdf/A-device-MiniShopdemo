@@ -29,21 +29,6 @@
   ],
   "products": [
     {
-      "id": 1,
-      "name": "iPhone 14 Pro Max",
-      "price": 60990,
-      "category": "iPhone",
-      "image": "/images/14pmf1.jpg",
-      "description": "Идеальное сочетание цены и качества",
-      "storage": "128 ГБ",
-      "batteryHealth": "88%",
-      "condition": "Идеальное",
-      "extraImages": [
-        "/images/14pmf2.jpg",
-        "/images/14pmb.jpg"
-      ]
-    },
-    {
       "id": 2,
       "name": "iPhone 14 Pro",
       "price": 50990,
@@ -87,20 +72,6 @@
         "/images/13pmf2.jpg",
         "/images/13pmf3.jpg",
         "/images/13pmb.jpg"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "MacBook Air 13 M2",
-      "price": 64499,
-      "category": "Macbook",
-      "image": "/images/mac.jpg",
-      "description": "Идеальное сочетание цены и качества",
-      "storage": "256 ГБ",
-      "batteryHealth": "92%",
-      "condition": "Идеальное",
-      "extraImages": [
-        "/images/mac1.jpg"
       ]
     },
     {
