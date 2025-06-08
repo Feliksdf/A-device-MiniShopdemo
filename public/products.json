@@ -243,7 +243,7 @@
       "id": 18,
       "name": "GameBox M10 Ultra",
       "price": 3200,
-      "category": "Игровые приставки",
+      "category": "Игровые и TV приставки",
       "image": "/images/gamebox.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -463,7 +463,7 @@
       "id": 36,
       "name": "Playstation 5 DVD slim",
       "price": 55990,
-      "category": "Игровые приставки",
+      "category": "Игровые и TV приставки",
       "image": "/images/ps5dgn.jpg",
       "description": "Новая техника под заказ, срок доставки от 1 до 5 дней",
       "storage": "",
@@ -475,7 +475,7 @@
       "id": 37,
       "name": "Playstation 5 Digital slim",
       "price": 51490,
-      "category": "Игровые приставки",
+      "category": "Игровые и TV приставки",
       "image": "/images/ps5dn.jpeg",
       "description": "Новая техника под заказ, срок доставки от 1 до 5 дней",
       "storage": "",
@@ -512,6 +512,86 @@
         "/images/iphone14n1.jpg",
         "/images/iphone14n2.jpg"
       ]
+    },
+    {
+      "id": 40,
+      "name": "iPhone 14",
+      "price": 38990,
+      "category": "iPhone",
+      "image": "/images/iphone14w.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "128 ГБ",
+      "batteryHealth": "89%",
+      "condition": "Идеальное",
+      "extraImages": [
+        "/images/iphone14w1.jpg",
+        "/images/iphone14w3.jpg"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "iPhone 14 pro max",
+      "price": 55490,
+      "category": "iPhone",
+      "image": "/images/iphone14pmb2.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "128 ГБ",
+      "batteryHealth": "87%",
+      "condition": "Идеальное",
+      "extraImages": [
+        "/images/iphone14pmb.jpg",
+        "/images/iphone14pmb1.jpg",
+        "/images/iphone14pmb3.jpg"
+      ]
+    },
+   {
+      "id": 42,
+      "name": "A-pencil",
+      "price": 1990,
+      "category": "Аксессуары",
+      "image": "/images/apencil.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/apencil1.jpg"
+      ]
+    },
+   {
+      "id": 43,
+      "name": "TV box MX-10",
+      "price": 2500,
+      "category": "Игровые и TV приставки",
+      "image": "/images/mibox.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/mibox.jpg",
+        "/images/mibox1.jpg",
+        "/images/mibox2.jpg",
+        "/images/mibox3.jpg",
+        "/images/mibox4.jpg",
+        "/images/mibox5.jpg"
+      ]
+    },
+        {
+      "id": 44,
+      "name": "iPhone 14",
+      "price": 36990,
+      "category": "iPhone",
+      "image": "/images/iphone14f.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "128 ГБ",
+      "batteryHealth": "85%",
+      "condition": "Идеальное",
+      "extraImages": [
+        "/images/iphone14f1.jpg",
+        "/images/iphone14f2.jpg"
+      ]
     }
+
   ]
 }
