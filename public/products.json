@@ -528,22 +528,6 @@
         "/images/iphone14w3.jpg"
       ]
     },
-    {
-      "id": 41,
-      "name": "iPhone 14 pro max",
-      "price": 55490,
-      "category": "iPhone",
-      "image": "/images/iphone14pmb2.jpg",
-      "description": "Идеальное сочетание цены и качества",
-      "storage": "128 ГБ",
-      "batteryHealth": "87%",
-      "condition": "Идеальное",
-      "extraImages": [
-        "/images/iphone14pmb.jpg",
-        "/images/iphone14pmb1.jpg",
-        "/images/iphone14pmb3.jpg"
-      ]
-    },
    {
       "id": 42,
       "name": "A-pencil",
