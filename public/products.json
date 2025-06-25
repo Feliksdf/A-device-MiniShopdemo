@@ -486,48 +486,18 @@
     {
       "id": 38,
       "name": "iphone 13 pro max",
-      "price": 47990,
+      "price": 41990,
       "category": "iPhone",
       "image": "/images/ip13pmg.jpg",
       "description": "Новая техника под заказ, срок доставки от 1 до 5 дней",
-      "storage": "",
-      "batteryHealth": "",
+      "storage": "256 гб",
+      "batteryHealth": "84%",
       "condition": "Новые",
       "extraImages": [
         "/images/ip13pmg1.jpg",
       "/images/ip13pmg2.jpg",
     "/images/ip13pmg3.jpg"]
     },  
-    {
-      "id": 39,
-      "name": "iphone 14",
-      "price": 44000,
-      "category": "New iPhone",
-      "image": "/images/iphone14n.jpg",
-      "description": "Телефон в наличии",
-      "storage": "128",
-      "batteryHealth": "",
-      "condition": "Новые",
-      "extraImages": [
-        "/images/iphone14n1.jpg",
-        "/images/iphone14n2.jpg"
-      ]
-    },
-    {
-      "id": 40,
-      "name": "iPhone 14",
-      "price": 38990,
-      "category": "iPhone",
-      "image": "/images/iphone14w.jpg",
-      "description": "Идеальное сочетание цены и качества",
-      "storage": "128 ГБ",
-      "batteryHealth": "89%",
-      "condition": "Идеальное",
-      "extraImages": [
-        "/images/iphone14w1.jpg",
-        "/images/iphone14w3.jpg"
-      ]
-    },
    {
       "id": 42,
       "name": "A-pencil",
