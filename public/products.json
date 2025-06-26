@@ -59,22 +59,6 @@
       ]
     },
     {
-      "id": 4,
-      "name": "iPhone 13 Pro Max",
-      "price": 47990,
-      "category": "iPhone",
-      "image": "/images/13pmf1.jpg",
-      "description": "Идеальное сочетание цены и качества",
-      "storage": "256 ГБ",
-      "batteryHealth": "83%",
-      "condition": "Хорошее (есть царапины на дисплее)",
-      "extraImages": [
-        "/images/13pmf2.jpg",
-        "/images/13pmf3.jpg",
-        "/images/13pmb.jpg"
-      ]
-    },
-    {
       "id": 6,
       "name": "Apods 4 Premium",
       "price": 1890,
