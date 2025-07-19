@@ -514,21 +514,6 @@
         "/images/mibox4.jpg",
         "/images/mibox5.jpg"
       ]
-    },
-        {
-      "id": 44,
-      "name": "iPhone 14",
-      "price": 35990,
-      "category": "iPhone",
-      "image": "/images/iphone14f.jpg",
-      "description": "Идеальное сочетание цены и качества",
-      "storage": "128 ГБ",
-      "batteryHealth": "85%",
-      "condition": "Идеальное",
-      "extraImages": [
-        "/images/iphone14f1.jpg",
-        "/images/iphone14f2.jpg"
-      ]
     }
 
   ]
