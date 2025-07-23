@@ -467,21 +467,6 @@
       "condition": "Новые",
       "extraImages": []
     },
-    {
-      "id": 38,
-      "name": "iphone 13 pro max",
-      "price": 44990,
-      "category": "iPhone",
-      "image": "/images/ip13pmg.jpg",
-      "description": "Новая техника под заказ, срок доставки от 1 до 5 дней",
-      "storage": "256 гб",
-      "batteryHealth": "84%",
-      "condition": "Новые",
-      "extraImages": [
-        "/images/ip13pmg1.jpg",
-      "/images/ip13pmg2.jpg",
-    "/images/ip13pmg3.jpg"]
-    },  
    {
       "id": 42,
       "name": "A-pencil",
