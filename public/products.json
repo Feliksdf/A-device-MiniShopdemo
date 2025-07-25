@@ -31,7 +31,7 @@
     {
       "id": 2,
       "name": "iPhone 14 Pro",
-      "price": 49490,
+      "price": 50990,
       "category": "iPhone",
       "image": "/images/14pf.jpg",
       "description": "Идеальное сочетание цены и качества",
@@ -73,7 +73,7 @@
     {
       "id": 7,
       "name": "Apods 2 pro Premium",
-      "price": 2900,
+      "price": 1990,
       "category": "Наушники",
       "image": "/images/2Apods.jpg",
       "description": "Идеальное сочетание цены и качества",
