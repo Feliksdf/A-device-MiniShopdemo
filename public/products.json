@@ -31,7 +31,7 @@
     {
       "id": 2,
       "name": "iPhone 14 Pro",
-      "price": 50990,
+      "price": 49490,
       "category": "iPhone",
       "image": "/images/14pf.jpg",
       "description": "Идеальное сочетание цены и качества",
@@ -46,7 +46,7 @@
     {
       "id": 3,
       "name": "iPhone 14 Pro",
-      "price": 54990,
+      "price": 49990,
       "category": "iPhone",
       "image": "/images/14pzf1.jpg",
       "description": "Идеальное сочетание цены и качества",
