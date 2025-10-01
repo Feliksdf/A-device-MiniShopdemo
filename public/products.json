@@ -499,7 +499,58 @@
         "/images/mibox4.jpg",
         "/images/mibox5.jpg"
       ]
+    },
+     {
+      "id": 44,
+      "name": "Marshall willen",
+      "price": 1290,
+      "category": "Игровые и TV приставки",
+      "image": "/images/marshallmini.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": [
+        "/images/marshallmini1.jpg"
+      ]
+    },
+     {
+      "id": 45,
+      "name": "marshall m12",
+      "price": 3590,
+      "category": "Игровые и TV приставки",
+      "image": "/images/marshall.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
+    },
+     {
+      "id": 46,
+      "name": "Dyson расческа 2в1",
+      "price": 990,
+      "category": "Красота",
+      "image": "/images/rascheska.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
+    },
+     {
+      "id": 47,
+      "name": "Charger magsafe",
+      "price": 2500,
+      "category": "Аксессуары",
+      "image": "/images/magsafe.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
     }
+    
 
   ]
 }
