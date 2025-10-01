@@ -62,7 +62,7 @@
       "id": 6,
       "name": "Apods 4 Premium",
       "price": 1890,
-      "category": "Наушники",
+      "category": "Наушники и колонки",
       "image": "/images/Apods.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -74,7 +74,7 @@
       "id": 7,
       "name": "Apods 2 pro Premium",
       "price": 1990,
-      "category": "Наушники",
+      "category": "Наушники и колонки",
       "image": "/images/2Apods.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -89,7 +89,7 @@
       "id": 8,
       "name": "Buds FE premium",
       "price": 1300,
-      "category": "Наушники",
+      "category": "Наушники и колонки",
       "image": "/images/buds.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -101,7 +101,7 @@
       "id": 9,
       "name": "Apods Max premium",
       "price": 2500,
-      "category": "Наушники",
+      "category": "Наушники и колонки",
       "image": "/images/Apodsmax.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -504,7 +504,7 @@
       "id": 44,
       "name": "Marshall willen",
       "price": 1290,
-      "category": "Игровые и TV приставки",
+      "category": "Наушники и колонки",
       "image": "/images/marshallmini.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -518,7 +518,7 @@
       "id": 45,
       "name": "marshall m12",
       "price": 3590,
-      "category": "Игровые и TV приставки",
+      "category": "Наушники и колонки",
       "image": "/images/marshall.jpg",
       "description": "Идеальное сочетание цены и качества",
       "storage": "",
@@ -541,7 +541,7 @@
      {
       "id": 47,
       "name": "Charger magsafe",
-      "price": 2500,
+      "price": 450,
       "category": "Аксессуары",
       "image": "/images/magsafe.jpg",
       "description": "Идеальное сочетание цены и качества",
@@ -549,8 +549,18 @@
       "batteryHealth": "",
       "condition": "Новые",
       "extraImages": []
-    }
-    
-
+    },
+    {
+      "id": 49,
+      "name": "a-watch ultra 2",
+      "price": 2990,
+      "category": "Часы",
+      "image": "/images/applewatchultra.jpg",
+      "description": "Идеальное сочетание цены и качества",
+      "storage": "",
+      "batteryHealth": "",
+      "condition": "Новые",
+      "extraImages": []
+    },
   ]
 }
