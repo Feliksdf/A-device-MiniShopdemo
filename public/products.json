@@ -511,13 +511,12 @@
       "batteryHealth": "",
       "condition": "Новые",
       "extraImages": [
-        "/images/marshallmini1.jpg"
-      ]
+        "/images/marshallmini1.jpg"]
     },
      {
       "id": 45,
       "name": "marshall m12",
-      "price": 3590,
+      "price": 2990,
       "category": "Наушники и колонки",
       "image": "/images/marshall.jpg",
       "description": "Идеальное сочетание цены и качества",
